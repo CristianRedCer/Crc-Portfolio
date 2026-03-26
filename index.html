@@ -6,6 +6,7 @@
   <meta name="author" content="Cristian-Redondo-Cervantes" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
+  <link rel="icon" href="/Crc-Portfolio/favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -49,9 +50,13 @@
     .hero-photo-frame::after { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1px solid #222; border-radius: 12px; z-index: -1; }
     .hero-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 10px; filter: grayscale(20%); }
     .hero-badge { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0.5rem 1.2rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--muted); white-space: nowrap; display: flex; align-items: center; gap: 0.5rem; }
-    .hero-badge-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease-in-out infinite; flex-shrink: 0; }
+    .hero-badge-dot { width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: pulse 2s ease-in-out infinite;
+        flex-shrink: 0; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
-
     /* BOTONES */
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.8rem; border-radius: 4px; font-family: 'DM Mono', monospace; font-size: 0.85rem; letter-spacing: 0.05em; cursor: pointer; text-decoration: none; transition: all 0.2s; }
     .btn-primary { background: var(--accent); color: #0d0d0d; border: 2px solid var(--accent); font-weight: 500; }
@@ -135,10 +140,10 @@
   <nav>
     <span class="nav-logo">// CristianRedCer</span>
     <ul class="nav-links">
-      <li><a href="#sobre-mi">sobre_mi</a></li>
-      <li><a href="#proyectos">proyectos</a></li>
-      <li><a href="#formacion">formación</a></li>
-      <li><a href="#contacto">contacto</a></li>
+      <li><a href="#sobre-mi">Sobre_Mí</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#formacion">Formación</a></li>
+      <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
 
@@ -153,15 +158,13 @@
         Con ganas de seguir aprendiendo y crecer en el mundo del desarrollo.
       </p>
       <div class="hero-btns">
-        <a href="Currículum_Vitae_Cristian_Redondo_Cervantes.pdf" class="btn btn-primary" target="_blank">↓ Descargar CV</a>
+        <a href="Currículum Vitae Cristian Redondo Cervantes.pdf" class="btn btn-primary" target="_blank">↓ Descargar CV</a>
         <a href="#proyectos" class="btn btn-outline">Ver proyectos →</a>
       </div>
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-frame">
         <img class="hero-photo" src="foto_mia.jpg" alt="Cristian Redondo Cervantes" />
-          <span class="hero-badge-dot"></span>
-          Disponible para prácticas
         </div>
       </div>
     </div>
@@ -169,7 +172,7 @@
 
   <!-- SOBRE MÍ -->
   <section id="sobre-mi">
-    <p class="section-label">01 — sobre mí</p>
+    <p class="section-label">01 — Sobre mí</p>
     <h2 class="section-title">Quién soy</h2>
     <div class="about-grid">
       <div class="about-text">
@@ -198,7 +201,6 @@
           <span class="skill-tag">XML</span>
           <span class="skill-tag">Git</span>
           <span class="skill-tag">GitHub</span>
-          <span class="skill-tag">Android</span>
           <span class="skill-tag">Redes</span>
           <span class="skill-tag">Linux</span>
         </div>
@@ -208,7 +210,7 @@
 
   <!-- PROYECTOS -->
   <section id="proyectos" style="max-width:1100px; margin:0 auto; padding:6rem 4rem;">
-    <p class="section-label">02 — proyectos</p>
+    <p class="section-label">02 — Proyectos</p>
     <h2 class="section-title">Lo que he construido</h2>
     <div class="projects-grid">
 
@@ -238,7 +240,6 @@
           <span class="project-tag">GitHub Actions</span>
         </div>
         <div class="project-links">
-          <a href="https://cristianredcer.github.io/Crc-Portfolio/" class="project-link" target="_blank">↗ Demo</a>
           <a href="https://github.com/CristianRedCer/Crc-Portfolio" class="project-link" target="_blank">⌥ GitHub</a>
         </div>
       </div>
@@ -248,7 +249,7 @@
 
   <!-- FORMACIÓN & EXPERIENCIA -->
   <section id="formacion">
-    <p class="section-label">03 — formación & experiencia</p>
+    <p class="section-label">03 — Formación & Experiencia</p>
     <h2 class="section-title">Mi trayectoria</h2>
     <div class="exp-list">
 
@@ -294,7 +295,7 @@
   <!-- CONTACTO -->
   <section id="contacto" style="max-width:900px;">
     <div class="contact-wrap">
-      <p class="section-label" style="justify-content:center;">04 — contacto</p>
+      <p class="section-label" style="justify-content:center;">04 — Contacto</p>
       <h2>¿Hablamos?<br/><span>Estoy disponible.</span></h2>
       <p>Busco prácticas o proyectos donde seguir aprendiendo. Si tienes algo interesante, escríbeme sin compromiso.</p>
       <div class="contact-links">
@@ -307,7 +308,7 @@
 
   <footer>
     <span>© 2026 CristianRedCer</span>
-    <span>Hecho con HTML, CSS y mucho café ☕</span>
+    <span>Hecho con HTML y CSS</span>
   </footer>
 
 </body>
