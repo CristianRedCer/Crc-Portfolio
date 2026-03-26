@@ -2,14 +2,20 @@
 <html lang="es">
   <head>
     <title>CristianRedCer — En mantenimiento</title>
-    <meta name="description" content="Portfolio de CristianRedCer - Desarrollador Junior" />
+    <meta
+      name="description"
+      content="Portfolio de CristianRedCer - Desarrollador Junior"
+    />
     <meta name="author" content="Cristian-Redondo-Cervantes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <link rel="icon" href="/Crc-Portfolio/favicon.png" type="image/jpeg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --accent: #e8ff47;
@@ -20,7 +26,9 @@
         --muted: #666;
       }
 
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
@@ -61,7 +69,11 @@
         transform: translate(-50%, -50%);
         width: 700px;
         height: 700px;
-        background: radial-gradient(circle, rgba(232, 255, 71, 0.06) 0%, transparent 65%);
+        background: radial-gradient(
+          circle,
+          rgba(232, 255, 71, 0.06) 0%,
+          transparent 65%
+        );
         pointer-events: none;
       }
 
@@ -98,8 +110,15 @@
       }
 
       @keyframes pulse {
-        0%, 100% { opacity: 1; transform: scale(1); }
-        50% { opacity: 0.4; transform: scale(0.8); }
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.4;
+          transform: scale(0.8);
+        }
       }
 
       h1 {
@@ -110,7 +129,9 @@
         margin-bottom: 0.5rem;
       }
 
-      h1 span { color: var(--accent); }
+      h1 span {
+        color: var(--accent);
+      }
 
       .subtitle {
         font-family: "DM Mono", monospace;
@@ -155,7 +176,11 @@
         transition: width 0.3s ease;
       }
 
-      .tasks { display: flex; flex-direction: column; gap: 0.5rem; }
+      .tasks {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
 
       .task {
         font-family: "DM Mono", monospace;
@@ -166,9 +191,17 @@
         gap: 0.7rem;
       }
 
-      .task-icon { color: var(--accent); font-size: 0.65rem; }
-      .task-icon.pending { color: var(--border); }
-      .task.done { color: #444; text-decoration: line-through; }
+      .task-icon {
+        color: var(--accent);
+        font-size: 0.65rem;
+      }
+      .task-icon.pending {
+        color: var(--border);
+      }
+      .task.done {
+        color: #444;
+        text-decoration: line-through;
+      }
 
       .social-links {
         display: flex;
@@ -189,7 +222,10 @@
         letter-spacing: 0.05em;
       }
 
-      .social-link:hover { border-color: var(--accent); color: var(--accent); }
+      .social-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
 
       .footer-text {
         position: fixed;
@@ -210,14 +246,34 @@
         border-color: #222;
         border-style: solid;
       }
-      .corner-tl { top: 1.5rem; left: 1.5rem; border-width: 1px 0 0 1px; }
-      .corner-tr { top: 1.5rem; right: 1.5rem; border-width: 1px 1px 0 0; }
-      .corner-bl { bottom: 1.5rem; left: 1.5rem; border-width: 0 0 1px 1px; }
-      .corner-br { bottom: 1.5rem; right: 1.5rem; border-width: 0 1px 1px 0; }
+      .corner-tl {
+        top: 1.5rem;
+        left: 1.5rem;
+        border-width: 1px 0 0 1px;
+      }
+      .corner-tr {
+        top: 1.5rem;
+        right: 1.5rem;
+        border-width: 1px 1px 0 0;
+      }
+      .corner-bl {
+        bottom: 1.5rem;
+        left: 1.5rem;
+        border-width: 0 0 1px 1px;
+      }
+      .corner-br {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        border-width: 0 1px 1px 0;
+      }
 
       @media (max-width: 480px) {
-        .progress-wrap { padding: 1.2rem; }
-        .corner { display: none; }
+        .progress-wrap {
+          padding: 1.2rem;
+        }
+        .corner {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -250,16 +306,36 @@
           <div class="progress-fill" id="bar"></div>
         </div>
         <div class="tasks">
-          <div class="task done"><span class="task-icon">✓</span> Rediseño de la home</div>
-          <div class="task done"><span class="task-icon">✓</span> Optimización de rendimiento</div>
-          <div class="task"><span class="task-icon">▸</span> Nuevos proyectos añadidos</div>
+          <div class="task done">
+            <span class="task-icon">✓</span> Rediseño de la home
+          </div>
+          <div class="task done">
+            <span class="task-icon">✓</span> Optimización de rendimiento
+          </div>
+          <div class="task">
+            <span class="task-icon">▸</span> Nuevos proyectos añadidos
+          </div>
         </div>
       </div>
 
       <div class="social-links">
-        <a href="mailto:cervantes.redondo.cristian@gmail.com" class="social-link">✉ Email</a>
-        <a href="https://github.com/CristianRedCer" class="social-link" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/" class="social-link" target="_blank">LinkedIn</a>
+        <a
+          href="mailto:cervantes.redondo.cristian@gmail.com"
+          class="social-link"
+          >✉ Email</a
+        >
+        <a
+          href="https://github.com/CristianRedCer"
+          class="social-link"
+          target="_blank"
+          >GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/"
+          class="social-link"
+          target="_blank"
+          >LinkedIn</a
+        >
       </div>
     </div>
 
