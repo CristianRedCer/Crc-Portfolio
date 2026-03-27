@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crc · Portfolio Digital · Cristian Redondo Cervantes</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #1a6b3a;
+  --green-mid: #2d9e59;
+  --green-light: #a8e6bc;
+  --cream: #f5f0e8;
+  --dark: #0e1510;
+  --dark2: #141d16;
+  --mid: #1f2e22;
+  --accent: #e8c547;
+  --blue: #4a90d9;
+  --red: #c94040;
+  --mono: 'DM Mono', monospace;
+  --serif: 'Playfair Display', serif;
+  --sans: 'DM Sans', sans-serif;
+  --radius: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--dark);
+  color: var(--cream);
+  font-family: var(--sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 15% 10%, rgba(45,158,89,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(26,107,58,0.07) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 200;
+  backdrop-filter: blur(18px);
+  background: rgba(14,21,16,0.88);
+  border-bottom: 1px solid rgba(168,230,188,0.09);
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px;
+}
+.nav-logo { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: 0.05em; color: var(--cream); }
+.nav-logo span { color: var(--green-mid); }
+.nav-links { display: flex; gap: 4px; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.45); text-decoration: none; padding: 6px 14px; border-radius: 4px; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--cream); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--accent); }
+
+/* HERO */
+.hero {
+  position: relative; z-index: 1;
+  padding: 90px 40px 70px;
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end;
+}
+@media (max-width: 700px) { .hero { grid-template-columns: 1fr; } }
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--green-mid); margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--green-mid); }
+.hero h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 96px); font-weight: 900; line-height: 0.95; letter-spacing: -2px; }
+.hero h1 em { font-style: italic; color: var(--green-mid); }
+.hero-sub { margin-top: 24px; font-size: 15px; color: rgba(245,240,232,0.5); max-width: 480px; line-height: 1.6; }
+.hero-meta { margin-top: 36px; display: flex; gap: 32px; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.hero-meta-item .label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,240,232,0.3); }
+.hero-meta-item .value { font-size: 13px; color: var(--cream); font-weight: 500; }
+.hero-badge {
+  background: rgba(45,158,89,0.12); border: 1px solid rgba(45,158,89,0.25);
+  border-radius: var(--radius); padding: 24px 28px; text-align: center; min-width: 130px;
+}
+.hero-badge .big { font-family: var(--serif); font-size: 52px; font-weight: 900; color: var(--green-mid); line-height: 1; display: block; }
+.hero-badge .small { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,240,232,0.35); margin-top: 6px; display: block; }
+
+/* DIVIDER */
+.divider { height: 1px; max-width: 1100px; margin: 0 auto; background: linear-gradient(90deg, transparent, rgba(168,230,188,0.18), transparent); }
+
+/* MODULE NAV */
+.module-nav {
+  position: relative; z-index: 1;
+  max-width: 1100px; margin: 0 auto;
+  padding: 32px 40px 0;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.mod-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(168,230,188,0.1);
+  border-radius: 6px; padding: 10px 18px; cursor: pointer; transition: all 0.2s; text-align: left;
+}
+.mod-btn:hover { border-color: rgba(168,230,188,0.25); background: rgba(45,158,89,0.07); }
+.mod-btn.active { border-color: var(--green-mid); background: rgba(45,158,89,0.12); }
+.mod-code { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--green-mid); text-transform: uppercase; }
+.mod-name { font-size: 12px; color: rgba(245,240,232,0.6); font-weight: 400; max-width: 160px; }
+.mod-btn.active .mod-name { color: var(--cream); }
+
+/* SECTION */
+.section { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 48px 40px; display: none; }
+.section.active { display: block; }
+.section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 40px; }
+.section-number { font-family: var(--mono); font-size: 11px; color: var(--green-mid); letter-spacing: 0.1em; }
+.section-title { font-family: var(--serif); font-size: 26px; font-weight: 700; }
+.section-line { flex: 1; height: 1px; background: rgba(168,230,188,0.12); }
+
+/* TRIMESTRE TABS */
+.trim-tabs { display: flex; gap: 0; margin-bottom: 40px; border-bottom: 1px solid rgba(168,230,188,0.12); }
+.trim-tab {
+  padding: 10px 26px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; cursor: pointer; color: rgba(245,240,232,0.38);
+  border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; background: none;
+}
+.trim-tab:hover { color: var(--cream); }
+.trim-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.trim-pane { display: none; }
+.trim-pane.active { display: block; }
+
+/* RA BLOCK */
+.ra-block { margin-bottom: 44px; }
+.ra-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(45,158,89,0.12); border: 1px solid rgba(45,158,89,0.25);
+  border-radius: 3px; padding: 6px 14px; margin-bottom: 20px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-light);
+}
+.ra-dot { width: 6px; height: 6px; background: var(--green-mid); border-radius: 50%; flex-shrink: 0; }
+
+/* CARDS */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; }
+.card {
+  background: rgba(255,255,255,0.025); border: 1px solid rgba(168,230,188,0.09);
+  border-radius: var(--radius); padding: 22px; position: relative;
+  overflow: hidden; transition: all 0.25s; cursor: pointer; text-decoration: none; display: block; color: inherit;
+}
+.card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: var(--green-mid); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+}
+.card:hover { border-color: rgba(168,230,188,0.28); background: rgba(45,158,89,0.06); transform: translateY(-2px); }
+.card:hover::after { transform: scaleX(1); }
+.card-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 5px; border-radius: 3px; padding: 3px 8px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.badge-pdf  { background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.25); color: #e87a7a; }
+.badge-docx { background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.25); color: #7ab4e8; }
+.badge-canva { background: rgba(0,196,204,0.12); border: 1px solid rgba(0,196,204,0.25); color: #5ee6ea; }
+.badge-grupo { background: rgba(232,197,71,0.12); border: 1px solid rgba(232,197,71,0.25); color: var(--accent); }
+.badge-practica { background: rgba(150,100,220,0.12); border: 1px solid rgba(150,100,220,0.25); color: #c09cef; }
+.badge-cont { background: rgba(45,158,89,0.12); border: 1px solid rgba(45,158,89,0.25); color: var(--green-light); }
+.badge .dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+.card h3 { font-family: var(--serif); font-size: 17px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; color: var(--cream); }
+.card p { font-size: 12.5px; line-height: 1.6; color: rgba(245,240,232,0.5); }
+.card-footer { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(168,230,188,0.07); display: flex; justify-content: space-between; align-items: center; }
+.card-file { font-family: var(--mono); font-size: 9.5px; color: rgba(245,240,232,0.22); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px; }
+.card-arrow { color: var(--green-mid); font-size: 15px; transition: transform 0.2s; }
+.card:hover .card-arrow { transform: translateX(4px); }
+
+/* CONTENIDOS GRID */
+.contenidos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.contenido-card {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(168,230,188,0.07);
+  border-radius: var(--radius); padding: 20px; transition: all 0.2s;
+}
+.contenido-card:hover { border-color: rgba(168,230,188,0.18); background: rgba(45,158,89,0.04); }
+.contenido-card h4 { font-family: var(--serif); font-size: 15px; margin-bottom: 10px; color: var(--cream); }
+.contenido-card ul { list-style: none; }
+.contenido-card li { font-size: 12px; color: rgba(245,240,232,0.45); padding: 3px 0 3px 14px; position: relative; line-height: 1.5; }
+.contenido-card li::before { content: '→'; position: absolute; left: 0; color: var(--green-mid); font-size: 10px; }
+
+/* STATS */
+.stats-row {
+  display: flex; gap: 32px; flex-wrap: wrap; margin-top: 48px; padding: 36px;
+  background: rgba(255,255,255,0.015); border: 1px solid rgba(168,230,188,0.07); border-radius: 10px;
+}
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-num { font-family: var(--serif); font-size: 44px; font-weight: 900; color: var(--green-mid); line-height: 1; }
+.stat-lbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,240,232,0.35); }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(8,14,10,0.92);
+  backdrop-filter: blur(12px); z-index: 500;
+  display: none; align-items: center; justify-content: center; padding: 32px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--mid); border: 1px solid rgba(168,230,188,0.18);
+  border-radius: 12px; padding: 44px; max-width: 580px; width: 100%;
+  position: relative; animation: modalIn 0.2s ease;
+}
+@keyframes modalIn { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform: translateY(0); } }
+.modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; color: rgba(245,240,232,0.35); font-size: 22px; cursor: pointer; transition: color 0.2s; }
+.modal-close:hover { color: var(--cream); }
+.modal h2 { font-family: var(--serif); font-size: 24px; margin-bottom: 14px; }
+.modal p { font-size: 13.5px; color: rgba(245,240,232,0.58); line-height: 1.7; margin-bottom: 10px; }
+.modal-file { margin-top: 20px; background: rgba(45,158,89,0.08); border: 1px solid rgba(45,158,89,0.2); border-radius: 6px; padding: 12px 16px; font-family: var(--mono); font-size: 11px; color: var(--green-light); line-height: 1.5; }
+.modal-group { margin-top: 14px; background: rgba(232,197,71,0.07); border: 1px solid rgba(232,197,71,0.2); border-radius: 6px; padding: 12px 16px; font-family: var(--mono); font-size: 11px; color: var(--accent); line-height: 1.6; }
+.modal-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; background: rgba(0,196,204,0.1); border: 1px solid rgba(0,196,204,0.25); border-radius: 6px; padding: 10px 16px; text-decoration: none; font-family: var(--mono); font-size: 11px; color: #5ee6ea; transition: background 0.2s; }
+.modal-link:hover { background: rgba(0,196,204,0.18); }
+
+/* FOOTER */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid rgba(168,230,188,0.07);
+  max-width: 1100px; margin: 40px auto 0;
+  padding: 28px 40px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+}
+footer p { font-family: var(--mono); font-size: 10.5px; color: rgba(245,240,232,0.28); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-family: var(--mono); font-size: 10.5px; color: rgba(245,240,232,0.28); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: var(--green-light); }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Crc<span> · Portfolio</span></span>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Inicio</a></li>
+    <li><a href="mailto:cervantes.redondo.cristian@gmail.com">Contacto</a></li>
+    <li><a href="https://github.com/CristianRedCer" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Portfolio Digital Personal · 2025–2026</div>
+    <h1>Cris<em>tian</em><br>Redondo<br>Cervantes</h1>
+    <p class="hero-sub">Portafolio de trabajos y actividades del ciclo formativo. Organizado por módulo, trimestre y resultado de aprendizaje.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Curso</span>
+        <span class="value">2025 – 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Contacto</span>
+        <span class="value">cervantes.redondo.cristian@gmail.com</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <span class="big">26</span>
+    <span class="small">Actividades</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="module-nav">
+  <button class="mod-btn active" onclick="switchModule(event,'sost')">
+    <div><div class="mod-code">Módulo 1</div><div class="mod-name">Sostenibilidad</div></div>
+  </button>
+  <button class="mod-btn" onclick="switchModule(event,'si')">
+    <div><div class="mod-code">Módulo 2</div><div class="mod-name">Sistemas Informáticos</div></div>
+  </button>
+  <button class="mod-btn" onclick="switchModule(event,'digi')">
+    <div><div class="mod-code">Módulo 3</div><div class="mod-name">Digitalización</div></div>
+  </button>
+</div>
+
+<!-- ══ SOSTENIBILIDAD ══ -->
+<div id="mod-sost" class="section active">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">Sostenibilidad Aplicada al Sistema Productivo</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="trim-tabs">
+    <button class="trim-tab active" onclick="switchTrim(event,'sost','t1')">1.er Trimestre</button>
+    <button class="trim-tab" onclick="switchTrim(event,'sost','t2')">2.º Trimestre</button>
+  </div>
+
+  <div id="sost-t1" class="trim-pane active">
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>RA1 — Sostenibilidad e Impacto Ambiental de las TIC</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('sost_act11')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Act1-1 — Reflexión sobre el impacto ambiental de la informática</h3>
+          <p>Análisis del doble papel de la informática: huella ecológica vs. optimización de procesos y reducción de emisiones.</p>
+          <div class="card-footer"><span class="card-file">Cristian Redondo Cervantes-Act1-1.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_act12')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>ActividadR1-2 — Investigación compromisos ASG</h3>
+          <p>Tabla comparativa de compromisos Ambientales, Sociales y de Gobernanza. Grupo Social ONCE, transparencia y métricas.</p>
+          <div class="card-footer"><span class="card-file">ActividadR1-2-Cristian-Redondo-Cervantes.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_act13')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad R1-3 — Sostenibilidad en grandes empresas tecnológicas</h3>
+          <p>Políticas medioambientales de Google y Amazon Web Services. Energías renovables y neutralidad de carbono.</p>
+          <div class="card-footer"><span class="card-file">Actividad R1-3.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_act14')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad R1-4 — Estándares de reporting: GRI y ASG</h3>
+          <p>Global Reporting Initiative como marco de transparencia empresarial. Importancia de los indicadores ASG para inversores.</p>
+          <div class="card-footer"><span class="card-file">Actividad R1-4.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_carg')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Reflexión sobre cargadores universales</h3>
+          <p>Debate sobre obligatoriedad de incluir cargadores. Perspectiva económica, medioambiental y del consumidor. Caso Apple y directiva UE.</p>
+          <div class="card-footer"><span class="card-file">Reflexión sobre cargadores.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_ra1pdf')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-cont"><span class="dot"></span>Contenido</span></div>
+          <h3>RA1 — Material base de Sostenibilidad</h3>
+          <p>Marco teórico y conceptual del Resultado de Aprendizaje 1. Referencia base del primer trimestre.</p>
+          <div class="card-footer"><span class="card-file">RA1-SOSTENIBILIDAD.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sost-t2" class="trim-pane">
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>RA2 — Eficiencia, Retos Globales y Debate Técnico</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('sost_act21')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>ACT2-1 — Retos Globales: El streaming y sus consecuencias</h3>
+          <p>Impacto energético del streaming: 40-55 g CO₂/hora de video. Centros de datos, redes y dispositivos. El video = 60% del tráfico global de Internet.</p>
+          <div class="card-footer"><span class="card-file">ACT2-1 Retos Globales.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('sost_debate')">
+          <div class="card-badges"><span class="badge badge-grupo"><span class="dot"></span>Grupo</span><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span></div>
+          <h3>RA2-2 — Debate: Eficiencia del código y sostenibilidad tecnológica</h3>
+          <p>Debate estructurado sobre código limpio vs. código eficiente. Responsabilidad ambiental del desarrollador en producción.</p>
+          <div class="card-footer"><span class="card-file">Debate sobre eficiencia del código…</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>RA3 — Análisis y Presentación de Datos de Sostenibilidad</div>
+      <div class="cards-grid">
+        <a class="card" href="https://www.canva.com/design/DAHECdIpCPI/l-2Hi7Yd9RgiQDoO5FuB5w/edit?authuser=0" target="_blank" rel="noopener">
+          <div class="card-badges"><span class="badge badge-canva"><span class="dot"></span>Canva</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>RA3-1 — Presentación Sostenibilidad</h3>
+          <p>Presentación visual elaborada en Canva sobre análisis y comunicación de datos relacionados con sostenibilidad tecnológica.</p>
+          <div class="card-footer"><span class="card-file">Ver en Canva</span><span class="card-arrow">↗</span></div>
+        </a>
+      </div>
+    </div>
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>RA4 — Estrategias y Propuestas de Mejora</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('sost_ra41')">
+          <div class="card-badges"><span class="badge badge-grupo"><span class="dot"></span>Grupo</span><span class="badge badge-canva"><span class="dot"></span>Canva</span></div>
+          <h3>RA4-1 — Propuesta de mejora de sostenibilidad</h3>
+          <p>Trabajo en grupo: propuesta de estrategias de mejora en sostenibilidad tecnológica. Presentación en Canva con Juan Manuel Toro Acuña, Alexis Esteban Martín y Arturo Carmona Roldán.</p>
+          <div class="card-footer"><span class="card-file">Ver en Canva</span><span class="card-arrow">↗</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">Actividades</span></div>
+    <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Trimestres</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">RA trabajados</span></div>
+    <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Trabajos en grupo</span></div>
+  </div>
+</div>
+
+<!-- ══ SISTEMAS INFORMÁTICOS ══ -->
+<div id="mod-si" class="section">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Sistemas Informáticos</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="trim-tabs">
+    <button class="trim-tab active" onclick="switchTrim(event,'si','t1')">1.er Trimestre</button>
+    <button class="trim-tab" onclick="switchTrim(event,'si','t2')">2.º Trimestre</button>
+    <button class="trim-tab" onclick="switchTrim(event,'si','t3')">3.er Trimestre</button>
+  </div>
+
+  <div id="si-t1" class="trim-pane active">
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>Tema 1 — Introducción a los Sistemas Informáticos</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('si_11')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 1.1 — Componentes de un sistema informático</h3>
+          <p>Estudio de los componentes hardware fundamentales. Identificación y función de CPU, RAM, almacenamiento, placa base y periféricos.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.1.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_12')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 1.2 — Arquitectura y funcionamiento del sistema</h3>
+          <p>Arquitectura von Neumann, ciclo fetch-decode-execute, estructura de buses y jerarquía de memoria.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.2.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_13')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 1.3 — Práctica de laboratorio hardware</h3>
+          <p>Identificación y manipulación de componentes físicos en el laboratorio. Documentación con capturas y resultados.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.3.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_14')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Actividad 1.4 — Montaje y configuración de PCs</h3>
+          <p>Montaje físico completo de un equipo. Procedimiento paso a paso con documentación fotográfica. Incluye simulador de montaje.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.4.docx + Simulador montaje PCs.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_15')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 1.5 — Representación de la información</h3>
+          <p>Sistemas de numeración, codificación binaria y hexadecimal. Conversiones entre bases y representación de datos.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.5.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_16')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Actividad 1.6 — Simulador CPU (LSPC)</h3>
+          <p>Programación en ensamblador con el simulador LSPC. Análisis del ciclo de instrucción en tiempo real.</p>
+          <div class="card-footer"><span class="card-file">Cristian-Actividad1.6.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_aula')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-practica"><span class="dot"></span>Clase</span></div>
+          <h3>Actividad de clase — Primer programa con Simulador CPU</h3>
+          <p>Primera toma de contacto con el simulador de CPU. Escritura del primer programa en ensamblador.</p>
+          <div class="card-footer"><span class="card-file">Actividad de clase-Primer programa con Simulador CPU.docx</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="si-t2" class="trim-pane">
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>Tema 2 — Implantación de Sistemas Operativos I</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('si_21act')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 1.1 — Instalación de Sistema Operativo</h3>
+          <p>Proceso de instalación completo. Documentación con capturas de pantalla de cada etapa (10 capturas + captura final).</p>
+          <div class="card-footer"><span class="card-file">Implantación de Sistemas Operativos I.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_22act')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 2.2 — Configuración del Sistema Operativo</h3>
+          <p>Gestión de usuarios, actualizaciones, drivers y herramientas del sistema. Configuración post-instalación.</p>
+          <div class="card-footer"><span class="card-file">Actividad2.2-CristianRedondoCervantes.docx/.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_p21')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 2.1 — Instalación Windows 10 en VM</h3>
+          <p>Instalación de Windows 10 en máquina virtual VirtualBox. Capturas completas de todo el proceso.</p>
+          <div class="card-footer"><span class="card-file">P2_1_CristianRedondo.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_p22')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 2.2 — Configuración avanzada del SO</h3>
+          <p>Firewall, actualizaciones, directivas básicas y optimización del rendimiento del sistema operativo.</p>
+          <div class="card-footer"><span class="card-file">P2-2_CritianRedondo.docx</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_p24')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 2.4 — Gestión de memoria: Paginación</h3>
+          <p>Análisis y configuración de la memoria virtual. Estudio del sistema de paginación en Windows.</p>
+          <div class="card-footer"><span class="card-file">P2_4_CristianRedondo.docx/.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="si-t3" class="trim-pane">
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>Tema 3 — Gestión de Ficheros, Directorios y Scripting</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('si_31')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 3.1 — Gestión de ficheros</h3>
+          <p>Operaciones con ficheros en CMD, PowerShell y GUI de Windows. Comandos avanzados con capturas de cada entorno.</p>
+          <div class="card-footer"><span class="card-file">Actividad 3.1 Gestión de ficheros.docx/.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_32')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 3.2 — Gestión de directorios</h3>
+          <p>Estructura de directorios en Windows. Operaciones en CMD (mkdir, rmdir, tree…) y PowerShell (New-Item, Get-ChildItem…).</p>
+          <div class="card-footer"><span class="card-file">Actividad 3.2 Gestión de directorios.docx/.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_33')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Scripts</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Actividad 3.3 — Copias de seguridad y Programador de tareas</h3>
+          <p>Automatización con scripts propios .bat y PowerShell: copia_orden_CRC, copia_pdf_num_CRC, elimina_pdf_num_CRC, mensaje_cierre_CRC.</p>
+          <div class="card-footer"><span class="card-file">Actividad3.3_Cristian.pdf + 5 scripts</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_retos')">
+          <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+          <h3>Act-Retos — Retos avanzados Tema 3</h3>
+          <p>Actividades de reto y ampliación. Ejercicios de nivel avanzado sobre gestión y administración del sistema operativo.</p>
+          <div class="card-footer"><span class="card-file">Act-Retos.docx</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="ra-block">
+      <div class="ra-label"><span class="ra-dot"></span>Prácticas — Windows y Ubuntu</div>
+      <div class="cards-grid">
+        <div class="card" onclick="openModal('si_p24b')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 2.4 — Creación de Particiones</h3>
+          <p>Gestión de particiones: creación, formateo, redimensionado. Herramientas de administración de discos y diskpart.</p>
+          <div class="card-footer"><span class="card-file">P2.4-CristianRedondoCervantes.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_p31')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 3.1 — Gestión de ficheros y directorios en Windows</h3>
+          <p>Práctica completa de gestión de ficheros y directorios. CMD, PowerShell y explorador de archivos Windows.</p>
+          <div class="card-footer"><span class="card-file">Práctica 3.1 Gestión de ficheros y directorios en Windows.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+        <div class="card" onclick="openModal('si_p32')">
+          <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+          <h3>Práctica 3.2 — Gestión en Ubuntu</h3>
+          <p>Gestión de ficheros y directorios en Ubuntu Linux. Comandos de terminal y comparativa con entorno Windows.</p>
+          <div class="card-footer"><span class="card-file">Practica 3.2 Ubuntu.pdf</span><span class="card-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">15</span><span class="stat-lbl">Actividades y prácticas</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Trimestres</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Temas</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-lbl">Scripts propios</span></div>
+  </div>
+</div>
+
+<!-- ══ DIGITALIZACIÓN ══ -->
+<div id="mod-digi" class="section">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Digitalización Aplicada al Sistema Productivo</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="ra-block">
+    <div class="ra-label"><span class="ra-dot"></span>RA4 — Digitalización y Transformación del Sistema Productivo</div>
+    <div class="cards-grid">
+      <div class="card" onclick="openModal('digi_ra4')">
+        <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+        <h3>RA4 — Digitalización Aplicada</h3>
+        <p>Análisis y propuestas de digitalización aplicadas al sistema productivo. Transformación digital, herramientas y estrategias de implantación.</p>
+        <div class="card-footer"><span class="card-file">RA4.docx / RA4.pdf</span><span class="card-arrow">→</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Actividad</span></div>
+    <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">RA completado</span></div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 · Cristian Redondo Cervantes · Portfolio Digital Personal</p>
+  <div class="footer-links">
+    <a href="mailto:cervantes.redondo.cristian@gmail.com">Email</a>
+    <a href="https://github.com/CristianRedCer" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div id="modalOverlay" class="modal-overlay" onclick="closeOnBg(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script>
+function switchModule(e, id) {
+  document.querySelectorAll('.mod-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('mod-' + id).classList.add('active');
+}
+function switchTrim(e, mod, tab) {
+  const sec = document.getElementById('mod-' + mod);
+  sec.querySelectorAll('.trim-tab').forEach(t => t.classList.remove('active'));
+  sec.querySelectorAll('.trim-pane').forEach(p => p.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById(mod + '-' + tab).classList.add('active');
+}
+
+const M = {
+  sost_act11:{ t:'Act1-1 — Impacto ambiental de la informática', c:'Reflexión personal sobre el doble papel de la informática: generación de residuos electrónicos y consumo energético de centros de datos vs. optimización de procesos industriales y reducción de emisiones.', f:'Cristian Redondo Cervantes-Act1-1.docx' },
+  sost_act12:{ t:'ActividadR1-2 — Compromisos ASG', c:'Investigación comparativa de compromisos Ambientales, Sociales y de Gobernanza. Tabla estructurada por empresa: Grupo Social ONCE (vehículos eléctricos, inclusión laboral, auditorías externas) y otras organizaciones.', f:'ActividadR1-2-Cristian-Redondo-Cervantes.docx' },
+  sost_act13:{ t:'Actividad R1-3 — Google y AWS', c:'Análisis de las estrategias de sostenibilidad de Google (Alphabet Inc.) y Amazon Web Services: objetivos de neutralidad de carbono, uso de energías renovables y compromisos publicados en sus informes anuales.', f:'Actividad R1-3.docx' },
+  sost_act14:{ t:'Actividad R1-4 — GRI y estándares ASG', c:'Estudio del Global Reporting Initiative (GRI), el estándar más utilizado mundialmente para informes de sostenibilidad. Indicadores ASG, transparencia empresarial e importancia para inversores y grupos de interés.', f:'Actividad R1-4.docx' },
+  sost_carg:{ t:'Reflexión sobre cargadores universales', c:'Debate sobre si los móviles deberían incluir cargador. Tres perspectivas: consumidor (necesidad y coste), empresa (margen y modelo de negocio) y medioambiental (reducción de residuos electrónicos). Caso Apple y directiva europea USB-C.', f:'Reflexión sobre cargadores.docx' },
+  sost_ra1pdf:{ t:'RA1 — Material base de Sostenibilidad', c:'Documento PDF con el marco teórico y conceptual del Resultado de Aprendizaje 1. Base de todas las actividades del primer trimestre del módulo de Sostenibilidad.', f:'RA1-SOSTENIBILIDAD.pdf' },
+  sost_act21:{ t:'ACT2-1 — El streaming y sus consecuencias', c:'Análisis del impacto ambiental del streaming: 40-55 g CO₂/hora de video. Cadena de emisiones completa: centros de datos (servidores 24/7 + refrigeración), redes (fibra, routers, antenas 4G/5G) y dispositivos. El video representa el 60% del tráfico global de Internet.', f:'ACT2-1 Retos Globales.docx' },
+  sost_debate:{ t:'RA2-2 — Debate: Eficiencia del código y sostenibilidad', c:'Debate estructurado sobre código limpio/legible vs. código eficiente/optimizado. Implicaciones en mantenibilidad, rendimiento en producción y consumo energético. Responsabilidad ética del desarrollador ante el medioambiente.', f:'Debate sobre eficiencia del código y sostenibilidad tecnológica.docx + .pdf', g:'👥 Cristian Redondo Cervantes · Alexis Esteban Martín' },
+  sost_ra41:{ t:'RA4-1 — Propuesta de mejora de sostenibilidad', c:'Trabajo en grupo: análisis y propuesta de estrategias de mejora en sostenibilidad tecnológica. Presentación con datos, visualizaciones y recomendaciones concretas elaborada en Canva.', g:'👥 Cristian Redondo Cervantes · Juan Manuel Toro Acuña · Alexis Esteban Martín · Arturo Carmona Roldán', link:'https://www.canva.com/design/DAHET9zlvgI/i-z9gfVcdm9NZ0nXOyQKJw/edit?authuser=0' },
+  si_11:{ t:'Actividad 1.1 — Componentes de un sistema informático', c:'Estudio de los componentes hardware fundamentales: CPU, RAM, almacenamiento, placa base, tarjeta gráfica, fuente de alimentación. Identificación y función de cada elemento.', f:'Cristian-Actividad1.1.docx' },
+  si_12:{ t:'Actividad 1.2 — Arquitectura y funcionamiento', c:'Arquitectura von Neumann, ciclo de instrucción (fetch-decode-execute), estructura de buses (datos, direcciones, control) y jerarquía de memoria (registros, caché, RAM, disco).', f:'Cristian-Actividad1.2.docx' },
+  si_13:{ t:'Actividad 1.3 — Práctica de laboratorio hardware', c:'Práctica de identificación y manipulación de componentes físicos. Documentación con capturas fotográficas y análisis de resultados obtenidos en laboratorio.', f:'Cristian-Actividad1.3.pdf' },
+  si_14:{ t:'Actividad 1.4 — Montaje y configuración de PCs', c:'Práctica de montaje físico completo de un equipo informático, incluyendo el simulador de montaje de PCs. Procedimiento paso a paso documentado con capturas.', f:'Cristian-Actividad1.4.docx + Cristian-Actividad1.4.pdf + Simulador montaje de PCs.docx' },
+  si_15:{ t:'Actividad 1.5 — Representación de la información', c:'Sistemas de numeración (binario, octal, hexadecimal, decimal). Conversiones entre bases. Codificación ASCII y Unicode. Representación de enteros y reales en punto flotante IEEE 754.', f:'Cristian-Actividad1.5.docx' },
+  si_16:{ t:'Actividad 1.6 — Simulador CPU (LSPC)', c:'Práctica con el simulador de CPU LSPC. Programación en ensamblador: instrucciones MOV, ADD, JMP, etc. Análisis del ciclo de instrucción en tiempo real desde el simulador.', f:'Cristian-Actividad1.6.pdf' },
+  si_aula:{ t:'Actividad de clase — Primer programa con Simulador CPU', c:'Primera toma de contacto en el aula con el simulador de CPU. Escritura y ejecución del primer programa en ensamblador bajo guía del profesor. Introdución a la programación de bajo nivel.', f:'Actividad de clase-Primer programa con Simulador CPU.docx' },
+  si_21act:{ t:'Actividad 1.1 — Instalación de SO', c:'Proceso completo de instalación de un sistema operativo. Particionado, formateo, selección de parámetros y configuración inicial. Documentado con 10 capturas + captura final del sistema funcionando.', f:'Implantación de Sistemas Operativos I.pdf' },
+  si_22act:{ t:'Actividad 2.2 — Configuración del SO', c:'Configuración post-instalación: creación y gestión de usuarios, actualización del sistema, instalación de drivers, herramientas de administración y personalización del entorno de trabajo.', f:'Actividad2.2-CristianRedondoCervantes.docx + .pdf' },
+  si_p21:{ t:'Práctica 2.1 — Instalación Windows 10 en VM', c:'Instalación de Windows 10 en máquina virtual VirtualBox. Creación de la VM, configuración de recursos asignados, proceso de instalación completo y ajustes iniciales del sistema.', f:'P2_1_CristianRedondo.pdf' },
+  si_p22:{ t:'Práctica 2.2 — Configuración avanzada del SO', c:'Configuración avanzada post-instalación: gestión de actualizaciones, firewall, antivirus, directivas de grupo básicas y optimización del rendimiento del sistema operativo.', f:'P2-2_CritianRedondo.docx' },
+  si_p24:{ t:'Práctica 2.4 — Gestión de memoria y paginación', c:'Análisis del sistema de gestión de memoria virtual de Windows. Configuración del archivo de paginación, monitorización del uso de memoria RAM y técnicas de optimización.', f:'P2_4_CristianRedondo.docx + .pdf' },
+  si_31:{ t:'Actividad 3.1 — Gestión de ficheros', c:'Operaciones con ficheros usando CMD (dir, copy, del, ren…), PowerShell (Get-Item, Copy-Item, Remove-Item…) y entorno gráfico Windows. Comparativa de comandos y capturas de cada entorno.', f:'Actividad 3.1 Gestión de ficheros.docx + .pdf' },
+  si_32:{ t:'Actividad 3.2 — Gestión de directorios', c:'Estructura de directorios en Windows. Operaciones en CMD (mkdir, rmdir, cd, tree…) y PowerShell (New-Item, Get-ChildItem…). Árbol de directorios, permisos básicos y comparativa entre interfaces.', f:'Actividad 3.2 Gestión de directorios.docx + .pdf' },
+  si_33:{ t:'Actividad 3.3 — Copias de seguridad y Programador de tareas', c:'Automatización de copias de seguridad con scripts propios en .bat y PowerShell. Programador de tareas Windows para ejecución automática. Scripts entregados: copia_orden_CRC.bat, copia_pdf_num_CRC.ps1, elimina_pdf_num_CRC.bat, mensaje_cierre_CRC.ps1, permisos_de_ejecucion.ps1.', f:'Actividad3.3_Cristian.pdf + 5 scripts (.bat / .ps1)' },
+  si_retos:{ t:'Act-Retos — Retos avanzados Tema 3', c:'Actividades de reto y ampliación del Tema 3. Ejercicios de nivel avanzado sobre gestión del sistema operativo, automatización de tareas y administración del sistema en Windows.', f:'Act-Retos.docx' },
+  si_p24b:{ t:'Práctica 2.4 — Creación de Particiones', c:'Gestión completa de particiones en disco duro: creación, formateo, redimensionado y eliminación. Uso de herramientas de administración de discos de Windows y línea de comandos (diskpart).', f:'P2.4-CristianRedondoCervantes.pdf' },
+  si_p31:{ t:'Práctica 3.1 — Gestión en Windows (ficheros y directorios)', c:'Práctica completa de gestión de ficheros y directorios en entorno Windows. Trabajo simultáneo con CMD, PowerShell y la interfaz gráfica del explorador de archivos.', f:'Práctica 3.1 Gestión de ficheros y directorios en Windows.pdf' },
+  si_p32:{ t:'Práctica 3.2 — Gestión en Ubuntu', c:'Gestión de ficheros y directorios en Ubuntu Linux. Comandos de terminal: ls, cd, mkdir, cp, mv, rm, chmod, chown. Comparativa con el entorno Windows visto en prácticas anteriores.', f:'Practica 3.2 Ubuntu.pdf' },
+  digi_ra4:{ t:'RA4 — Digitalización Aplicada al Sistema Productivo', c:'Análisis de la transformación digital y su impacto en el sistema productivo. Herramientas, estrategias y casos de uso de la digitalización en entornos empresariales y productivos actuales.', f:'RA4.docx + RA4.pdf' },
+};
+
+function openModal(id) {
+  const m = M[id]; if (!m) return;
+  let html = `<h2>${m.t}</h2><p>${m.c}</p>`;
+  if (m.g) html += `<div class="modal-group">${m.g}</div>`;
+  if (m.f) html += `<div class="modal-file">📄 ${m.f}</div>`;
+  if (m.link) html += `<a class="modal-link" href="${m.link}" target="_blank" rel="noopener">↗ Ver en Canva</a>`;
+  document.getElementById('modalContent').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+function closeOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
