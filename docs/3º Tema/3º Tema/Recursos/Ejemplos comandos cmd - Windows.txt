@@ -1,0 +1,288 @@
+Crear directorios. Comando mkdir
+--------------------------------
+Crear el directorio Apuntes en C:\Users\Usuario\Documents
+md C:\Users\Usuario\Documents
+
+Crear los siguientes directorios en C:\Users\Usuario\Documents\Apuntes.
+	ISO
+	PAR
+	FH
+	FOL
+	GBD
+	LMSGI
+	UD1
+	UD2
+	Redes
+
+Directorio activo -> C:\Users\Usuario\Documents
+C:\Users\Usuario\Documents>md Apuntes\ISO
+
+C:\Users\Usuario\Documents>cd C:\Users\Usuario\Documents
+
+C:\Users\Usuario\Documents>md Apuntes\PAR
+
+C:\Users\Usuario\Documents>md Apuntes\fh
+
+C:\Users\Usuario\Documents>md Apuntes\FOL
+
+C:\Users\Usuario\Documents>CD ..
+
+C:\Users\Usuario>md Documents\Apuntes\GBD
+
+C:\Users\Usuario>md Documents\Apuntes\LMSGI
+
+C:\Users\Usuario>cd Pictures
+
+C:\Users\Usuario\Pictures>md ..\Documents\Apuntes\UD1
+
+C:\Users\Usuario\Pictures>md ..\Documents\Apuntes\UD2
+
+C:\Users\Usuario\Pictures>md ..\Documents\Apuntes\Redes
+
+
+Listar el contenido de un directorio. Comando dir
+-------------------------------------------------
+Listar el directorio activo
+dir
+
+Listar el directorio C:\Windows\System32
+dir c:\Windows\System32
+
+Listar el directorio C:\Windows\System32 haciendo pausas por pantalla
+dir c:\Windows\System32 /p
+
+Listar el contenido del directorio Documents. Directorio activo: el perfil de usuario
+dir c:\Users\Usuario\Documents /p
+dir Documents /p
+
+Listar el archivo Referencia de Comandos Windows.chm del directorio Documents. Directorio activo: el perfil de usuario
+dir "Documentos\Referencia de Comandos Windows.chm"
+
+Listar los archivos de imágen tipo jpg del directorio c:\Windows\Web\Wallpaper\Theme1
+C:\Users\Usuario>dir C:\Windows\Web\Wallpaper\Theme1\*.jpg
+
+Listar los archivos de word del directorio Documentos
+C:\Users\Usuario>dir Documents\*.doc*
+
+Listar los archivos del directorio C:\windows\fonts cuyo nombre comienza por se y la extensión de tres letras tiene
+una t en medio.
+C:\Users\Usuario>dir C:\Windows\Fonts\se*.?t?
+
+Listar los archivos del directorio C:\Windows de tipo texto y en todos los subdirectorios (/s)
+dir C:\Windows\*.txt /s
+
+Buscar el archivo acer.jpg en el perfil de usuario
+C:\Users\Usuario>dir .\acer.jpg /s
+
+Buscar todos los archivos cuyo nombre comienza por pla en todo el volumen y en todos los subdirectorios (/s)
+C:\Users\Usuario>dir C:\pla* /s
+
+Listar los archivos y directorios ocultos de C:\Users
+C:\Users\Usuario>dir C:\Users /a:h -> Solo lista los que tienen el atributo oculto, y nada más.
+
+Listar los archivos de sistema y solo lectura de C:\Windows\System32
+dir C:\Windows\System32 /a:sr
+
+Listar los archivos del directorio Documents\manuales cuya extensión es pdf ordenados por tamaño descendente
+dir C:\Users\Usuario\Documentos\manuales\*.pdf /s /o
+
+Listar los archivos del directorio Documents\manuales cuya extensión es pdf ordenados por tamaño descendente e incluirlos en archivo llamado listado.txt
+dir C:\Users\Usuario\Documents\manuales\*.pdf /s /o > .\Documents\listado.txt
+
+Listar los archivos del directorio Documentos agrupados por extensión
+dir Documentos /o:e
+
+Listar los archivos anteriores agrupados pos extensión y ordenados por tamaño descendente
+dir Documentos /o:e-s
+dir Documentos /o:e /o:-s
+
+Listar los archvos del directorio Documents\redes en varias columnas y solo con el nombre de archivo
+dir Documentos\redes /w
+
+Ver la estructura de directorios y subdirectorios. Comando tree
+---------------------------------------------------------------
+
+Mostrar el árbol de directorios desde el directorio activo
+tree
+
+Mostrar el árbol de directorios del directorio activo con sus archivos paginado (more)
+tree /f | more
+
+Mostrar el árbol de directorios de la unidad D:
+tree D:\
+
+Copia de archivos. Comandos copy y xcopy
+----------------------------------------
+Copiar los archivos del directorio C:\Windows\AppPatch cuyo nombre acaba en main y la extensión de tres letras
+comienzan por sd al directorio Documents\Apuntes\Redes
+copy c:\Windows\apppatch\*main.sd? .\Documents\Apuntes\Redes
+
+Copiar los archivos del directorio C:\Windows\Boot\Fonts cuyo nombre comienza por m y la extensión es ttf al directorio
+Documents\Apuntes\ISO
+copy c:\Windows\Boot\Fonts\m*.ttf .\Documents\Apuntes\ISO
+
+Copiar el archivo Documents\El Disco Duro.pdf en el mismo directorio con el nombre HD.pdf
+copy ".\Documents\El Disco Duro.pdf" .\Documents\HD.pdf
+
+Copiar los archivos cuyo nombre contiene la cadena help y la extensión es cur del directorio C:\Windows\cursors
+al directorio Documents\Apuntes\PAR
+copy c:\Windows\Cursors\*help*.cur Documents\Apuntes\PAR
+
+Copiar los archivos de .\Pictures en el directorio .\Documents\Apuntes
+copy .\Pictures Documents\Apuntes
+
+Copiar el directorio .\Pictures y sus subdirectorios en el directorio .\Documents\redes
+xcopy /s .\Pictures .\Documents\redes
+
+Copiar el directorio .\Pictures  y sus subdirectorios inclusive los vacíos en el directorio .\Documents\manuales
+xcopy /s /e .\Pictures .\Documents\manuales
+
+Copiar el propio directorio c:\Windows\System32\drivers\etc y sus subdirectorios en .\Documents\Apuntes\ISO
+xcopy /s c:\Windows\System32\drivers\etc .\Documents\Apuntes\ISO\etc
+
+Copiar el propio directorio C:\Windows\System32\drivers y sus subdirectorios en .\Documents\Apuntes\GBD
+xcopy /s /i C:\Windows\System32\drivers .\Documents\Apuntes\GBD\drivers
+
+Copiar los archivos del directorio C:\Windows\Cursors cuyo nombre comienza por ae, contiene la cadena el y la
+extensión de tres letras acaba en r, al directorio Documents\Apuntes\ISO
+copy c:\Windows\Cursors\ae*el*.??r .\Documents\Apuntes\ISO
+xcopy c:\Windows\Cursors\ae*el*.??r .\Documents\Apuntes\ISO
+
+Copiar los archivos del directorio C:\Windows\Debug cuya extensión es log al directorio .\Documents\Apuntes\UD1
+copy c:\Windows\debug\*.log .\Documents\Apuntes\UD1
+xcopy c:\Windows\debug\*.log .\Documents\Apuntes\UD1
+
+Concatenar y copiar los archivos hosts y lmhosts.sam del directorio 
+C:\Windows\System32\drivers\etc al directorio Documents\Apuntes
+copy c:\Windows\System32\drivers\etc\hosts +c:\Windows\System32\drivers\etc\lmhosts.sam .\Documents\Apuntes
+
+Repetir el anterior pero el archivo de destino se llama HostsYLmhosts.sam
+copy c:\Windows\System32\drivers\etc\hosts +c:\Windows\System32\drivers\etc\lmhosts.sam .\Documents\Apuntes\HostsYLmhosts.sam
+
+Concatenar y copiar el archvios dberr.txt del directorio C:\Windows\System32\catrrot2 y el
+archivo WindowsCodecsRaw.txt del directorio c:\windows\system32 al directorio 
+.\Documents\Apuntes usando como destino el nombre del primer archivo de origen
+copy c:\Windows\System32\CatRoot2\dberr.txt +c:\Windows\System32\WindowsCodecsRaw.txt .\Documents\Apuntes
+
+Copiar el propio directorio C:\Windows\Boot\Resources y todo su contenido al directorio 
+Documents\Apuntes\ISO
+1º Copiar solo el contenido de Resources (4 formas)
+copy c:\Windows\Boot\Resources .\Documents\Apuntes\ISO
+copy c:\Windows\Boot\Resources\* .\Documents\Apuntes\ISO
+xcopy /s /e c:\Windows\Boot\Resources .\Documents\Apuntes\ISO
+xcopy /s /e c:\Windows\Boot\Resources\* .\Documents\Apuntes\ISO
+
+2º Copiar el directorio y su contenido (preguntando si el destino es un directorio)
+xcopy /s /e c:\Windows\Boot\Resources .\Documents\Apuntes\ISO\Resources
+
+3º Copiar el directorio y su contenido (sin que pregunte si el destino es un directorio)
+xcopy /s /e /i c:\Windows\Boot\Resources .\Documents\Apuntes\ISO\Resources
+
+Copiar del directorio c:\Windows\system32\drivers todos los archivos y directorios cuyo nombre
+comienza por u en el directorio Documents\Apuntes\pruebacopy
+xcopy /s /i C:\Windows\System32\drivers\u* .\Documents\Apuntes\pruebacopy
+
+Renombrar archivos. Comando Rename
+----------------------------------
+Cambiar el nombre del archivo aero_helpsel.cur del directorio Documents\Apuntes\ISO por 
+flecha_i.cur
+rename .\Documents\Apuntes\ISO\aero_helpsel.cur flecha_i.cur
+
+Cambiar el nombre del archivo Documents\Apuntes\hosts por ordenadores.txt
+ren Documents\Apuntes\hosts ordenadores.txt
+
+Cambiar el nombre del archivo Documents\Apuntes\hostsYlmhosts.sam 
+por Documents\Apuntes\archivo.txt
+ren Documents\Apuntes\HostsYLmhosts.sam archivo.txt
+
+Mover archivos. Comando move
+----------------------------
+Mover los archivos del directorio Documents\Apuntes\ISO cuyo nombre contiene link
+y la extensión de tres letras comienza por c al directorio Documents\Apuntes\Redes
+
+move Documents\Apuntes\ISO\*link*.c?? Documents\redes
+
+Mover los archivos del directorio Documents\Apuntes\ISO cuyo nombre contiene boot
+y la extensión acaba en f al directorio Documents\Apuntes
+
+move Documents\Apuntes\ISO\*boot*.*f Documents\Apuntes
+
+Mover los archivos del directorio Documents\Apuntes cuyo nombre comienza por ms ,
+contiene la h y la extesión comienza por t al directorio Documents\Apuntes\FOL
+
+move Documents\Apuntes\ms*h*.t* Documents\Apuntes\FOL
+
+Mover el directorio Documents\Apuntes\UD1 a Documents. Directorio activo Pictures
+move ..\Documents\Apuntes\UD1 ..\Documents
+
+Mover los archivos del directorio Documents\Apuntes\redes cuyo nombre contiene ma y la
+extensión es sdb al directoriio Documentes\Apuntes\PAR
+move ..\Documents\Apuntes\redes\*ma*.sdb ..\Documents\Apuntes\PAR
+
+Mover y cambiar de nombre el archivo Documents\redes\garl-2.0.pdf por 
+Documents\Apuntes\manuales\guia adm redes.pdf
+move ..\Documents\redes\garl-2.0.pdf "..\Documents\manuales\guia adm redes.pdf"
+
+Cambiar el nombre del archivo guia adm redes.pdf de Documents\manuales por conf red.pdf
+move "..\Documents\manuales\guia adm redes.pdf" "..\Documents\manuales\conf red.pdf"
+
+Cambiar el nombre del directorio Documents\Apuntes\LMSGI por lenguaje de marcas
+move ..\Documents\Apuntes\LMSGI "..\Documents\Apuntes\lenguaje de marcas"
+
+Ver el contenido de archivos de texto. Comandos Type y More
+-----------------------------------------------------------
+Mostrar el contenido del archvo Documents\README
+
+type ..\Documents\README
+more ..\Documents\README
+
+Visualizar el contenido de todos los archivos de Documents cuyo nombre comienza por READ
+
+more ..\Documents\READ*
+
+Concatenar todos los archivos de Documentos cuyo nombre comienza por READ en el archivo 
+Documents\Apuntes\todoslosread.txt
+type ..\Documents\READ*  > ..\Documents\Apuntes\todoslosread.txt
+
+Búsquedas de archivo. Comando where
+-----------------------------------
+Buscar los archivos cuyo nombre comienzan por hosts desde C:\Windows
+where /R C:\Windows hosts*
+
+Buscar los archivos pdf desde el directorio del perfil de usuario
+where /r . *.pdf
+
+Buscar los archivos pdf desde el directorio Documentes\manuales y las imágenes 
+jpg desde el directorio .\Pictures
+dir /s Documents\manuales\*.pdf Pictures\*.jpg
+
+Buscar los archivos cuyo nombre comienza por a y tienen extensiión dll desde c:\Windows\System32
+where /r C:\Windows\System32 a*.dll
+dir /s C:\Windows\System32\a*.dll
+
+Borrado de directorios. Comando rmdir
+-------------------------------------
+
+Borrar el directorio Documents\Apuntes\PAR
+C:\Users\Usuario>rmdir Documents\Apuntes\PAR
+El directorio no está vacío.
+
+Borrar el directorio Documentos\Apuntes\ISO y todo su contenido (rd es lo mismo que rmdir)
+rd c:\users\miguelangel\Documentos
+
+
+Borrado de archivos. Comandos Del y Erase
+-----------------------------------------
+Borrar los archivos del directorio Documents\Apuntes\PAR que tienen un guión bajo en el
+nombre.
+del Documents\Apuntes\PAR\*_*
+
+Borrar los archivos del directorio Documents\Apuntes\FOL cuyo nombre contiene hn 
+y la extensión es ttf.
+erase Documents\Apuntes\FOL\*hn*.ttf
+
+Borrar los archivos recursivamente del directorio Documents\Apuntes cuyo nombre comienza
+por c
+
+del /s Documents\Apuntes\c*
+
