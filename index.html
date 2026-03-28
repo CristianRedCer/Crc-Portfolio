@@ -2,21 +2,16 @@
 <html lang="es">
   <head>
     <title>CristianRedCer — Desarrollador Junior</title>
-    <meta
-      name="description"
-      content="Portfolio de Cristian Redondo Cervantes - Desarrollador Junior DAM"
-    />
+    <meta name="description" content="Portfolio de Cristian Redondo Cervantes - Desarrollador Junior DAM" />
     <meta name="author" content="Cristian-Redondo-Cervantes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <link rel="icon" href="/Crc-Portfolio/favicon.png" type="image/png" />
+    <link rel="icon" href="favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
     <style>
+      /* ── VARIABLES ── */
       :root {
         --accent: #e8ff47;
         --accent-dark: #b8cc00;
@@ -27,16 +22,8 @@
         --muted: #888;
         --border: #2a2a2a;
       }
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
       body {
         background: var(--bg);
         color: var(--text);
@@ -45,18 +32,30 @@
         overflow-x: hidden;
       }
 
-      /* NAV */
+      /* ── GRID BACKGROUND ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* ── NAV ── */
       nav {
         position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         z-index: 100;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1.2rem 4rem;
-        background: rgba(13, 13, 13, 0.9);
+        background: rgba(13, 13, 13, 0.92);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
       }
@@ -79,11 +78,10 @@
         letter-spacing: 0.05em;
         transition: color 0.2s;
       }
-      .nav-links a:hover {
-        color: var(--accent);
-      }
+      .nav-links a:hover { color: var(--accent); }
+      .nav-links a.active-link { color: var(--accent); }
 
-      /* HERO */
+      /* ── HERO ── */
       .hero {
         min-height: 100vh;
         display: grid;
@@ -96,29 +94,11 @@
         max-width: 1200px;
         margin: 0 auto;
       }
-      .hero::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(var(--border) 1px, transparent 1px),
-          linear-gradient(90deg, var(--border) 1px, transparent 1px);
-        background-size: 60px 60px;
-        opacity: 0.15;
-        pointer-events: none;
-        z-index: -1;
-      }
       .hero-glow {
         position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(232, 255, 71, 0.07) 0%,
-          transparent 70%
-        );
+        top: -100px; right: -100px;
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(232, 255, 71, 0.07) 0%, transparent 70%);
         pointer-events: none;
       }
       .hero-tag {
@@ -132,12 +112,7 @@
         align-items: center;
         gap: 0.6rem;
       }
-      .hero-tag::before {
-        content: "";
-        width: 24px;
-        height: 1px;
-        background: var(--accent);
-      }
+      .hero-tag::before { content: ""; width: 24px; height: 1px; background: var(--accent); }
       .hero h1 {
         font-size: clamp(2.8rem, 6vw, 5.5rem);
         font-weight: 800;
@@ -145,9 +120,7 @@
         letter-spacing: -0.03em;
         margin-bottom: 1.5rem;
       }
-      .hero h1 span {
-        color: var(--accent);
-      }
+      .hero h1 span { color: var(--accent); }
       .hero-desc {
         font-family: "DM Mono", monospace;
         font-size: 0.95rem;
@@ -156,13 +129,9 @@
         line-height: 1.8;
         margin-bottom: 2.5rem;
       }
-      .hero-btns {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
+      .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-      /* FOTO HERO */
+      /* ── FOTO HERO ── */
       .hero-photo-wrap {
         display: flex;
         justify-content: center;
@@ -171,8 +140,7 @@
       }
       .hero-photo-frame {
         position: relative;
-        width: 320px;
-        height: 380px;
+        width: 320px; height: 380px;
       }
       .hero-photo-frame::before {
         content: "";
@@ -184,17 +152,13 @@
       .hero-photo-frame::after {
         content: "";
         position: absolute;
-        top: 12px;
-        left: 12px;
-        right: -12px;
-        bottom: -12px;
+        top: 12px; left: 12px; right: -12px; bottom: -12px;
         border: 1px solid #222;
         border-radius: 12px;
         z-index: -1;
       }
       .hero-photo {
-        width: 100%;
-        height: 100%;
+        width: 100%; height: 100%;
         object-fit: cover;
         object-position: center top;
         border-radius: 10px;
@@ -218,25 +182,18 @@
         gap: 0.5rem;
       }
       .hero-badge-dot {
-        width: 7px;
-        height: 7px;
+        width: 7px; height: 7px;
         border-radius: 50%;
         background: var(--accent);
         animation: pulse 2s ease-in-out infinite;
         flex-shrink: 0;
       }
       @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.4;
-          transform: scale(0.8);
-        }
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.8); }
       }
-      /* BOTONES */
+
+      /* ── BOTONES ── */
       .btn {
         display: inline-flex;
         align-items: center;
@@ -250,27 +207,14 @@
         text-decoration: none;
         transition: all 0.2s;
       }
-      .btn-primary {
-        background: var(--accent);
-        color: #0d0d0d;
-        border: 2px solid var(--accent);
-        font-weight: 500;
-      }
-      .btn-primary:hover {
-        background: var(--accent-dark);
-        border-color: var(--accent-dark);
-      }
-      .btn-outline {
-        background: transparent;
-        color: var(--text);
-        border: 1px solid var(--border);
-      }
-      .btn-outline:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
+      .btn-primary { background: var(--accent); color: #0d0d0d; border: 2px solid var(--accent); font-weight: 500; }
+      .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+      .btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border); }
+      .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+      .btn-accent-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .btn-accent-outline:hover { background: var(--accent); color: #0d0d0d; }
 
-      /* SECCIONES */
+      /* ── SECCIONES BASE ── */
       section {
         padding: 6rem 4rem;
         max-width: 1100px;
@@ -289,8 +233,7 @@
       }
       .section-label::after {
         content: "";
-        flex: 1;
-        height: 1px;
+        flex: 1; height: 1px;
         background: var(--border);
         max-width: 80px;
       }
@@ -301,13 +244,8 @@
         margin-bottom: 3rem;
       }
 
-      /* SOBRE MÍ */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: start;
-      }
+      /* ── SOBRE MÍ ── */
+      .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
       .about-text p {
         font-family: "DM Mono", monospace;
         font-size: 0.9rem;
@@ -315,12 +253,7 @@
         line-height: 1.9;
         margin-bottom: 1.2rem;
       }
-      .skills-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        margin-top: 1rem;
-      }
+      .skills-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
       .skill-tag {
         font-family: "DM Mono", monospace;
         font-size: 0.75rem;
@@ -330,12 +263,7 @@
         color: var(--muted);
         transition: all 0.2s;
       }
-      .skill-tag:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-
-      /* CERTIFICADO */
+      .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
       .cert-badge {
         display: inline-flex;
         align-items: center;
@@ -350,79 +278,35 @@
         margin-top: 1.5rem;
       }
 
-      /* PROYECTOS */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
+      /* ── PROYECTOS ── */
+      .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
       .project-card {
         background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 8px;
         padding: 2rem;
-        transition:
-          border-color 0.25s,
-          transform 0.25s;
+        transition: border-color 0.25s, transform 0.25s;
         position: relative;
         overflow: hidden;
       }
       .project-card::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: 0; left: 0; right: 0;
         height: 2px;
         background: var(--accent);
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.3s;
       }
-      .project-card:hover {
-        border-color: #333;
-        transform: translateY(-4px);
-      }
-      .project-card:hover::before {
-        transform: scaleX(1);
-      }
-      .project-num {
-        font-family: "DM Mono", monospace;
-        font-size: 0.75rem;
-        color: var(--accent);
-        margin-bottom: 1rem;
-      }
-      .project-card h3 {
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-bottom: 0.8rem;
-        letter-spacing: -0.01em;
-      }
-      .project-card p {
-        font-family: "DM Mono", monospace;
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-      }
-      .project-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-      .project-tag {
-        font-family: "DM Mono", monospace;
-        font-size: 0.7rem;
-        padding: 0.25rem 0.6rem;
-        background: var(--surface2);
-        border-radius: 2px;
-        color: var(--muted);
-      }
-      .project-links {
-        display: flex;
-        gap: 1rem;
-      }
+      .project-card:hover { border-color: #333; transform: translateY(-4px); }
+      .project-card:hover::before { transform: scaleX(1); }
+      .project-num { font-family: "DM Mono", monospace; font-size: 0.75rem; color: var(--accent); margin-bottom: 1rem; }
+      .project-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: -0.01em; }
+      .project-card p { font-family: "DM Mono", monospace; font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+      .project-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+      .project-tag { font-family: "DM Mono", monospace; font-size: 0.7rem; padding: 0.25rem 0.6rem; background: var(--surface2); border-radius: 2px; color: var(--muted); }
+      .project-links { display: flex; gap: 1rem; }
       .project-link {
         font-family: "DM Mono", monospace;
         font-size: 0.78rem;
@@ -433,15 +317,10 @@
         gap: 0.3rem;
         transition: color 0.2s;
       }
-      .project-link:hover {
-        color: var(--accent);
-      }
+      .project-link:hover { color: var(--accent); }
 
-      /* EXPERIENCIA / FORMACIÓN */
-      .exp-list {
-        display: flex;
-        flex-direction: column;
-      }
+      /* ── EXPERIENCIA / FORMACIÓN ── */
+      .exp-list { display: flex; flex-direction: column; }
       .exp-item {
         display: grid;
         grid-template-columns: 160px 1fr;
@@ -449,34 +328,13 @@
         padding: 2rem 0;
         border-bottom: 1px solid var(--border);
       }
-      .exp-item:first-child {
-        border-top: 1px solid var(--border);
-      }
-      .exp-date {
-        font-family: "DM Mono", monospace;
-        font-size: 0.78rem;
-        color: var(--muted);
-        padding-top: 0.2rem;
-      }
-      .exp-content h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 0.3rem;
-      }
-      .exp-company {
-        font-family: "DM Mono", monospace;
-        font-size: 0.82rem;
-        color: var(--accent);
-        margin-bottom: 0.8rem;
-      }
-      .exp-content p {
-        font-family: "DM Mono", monospace;
-        font-size: 0.82rem;
-        color: var(--muted);
-        line-height: 1.7;
-      }
+      .exp-item:first-child { border-top: 1px solid var(--border); }
+      .exp-date { font-family: "DM Mono", monospace; font-size: 0.78rem; color: var(--muted); padding-top: 0.2rem; }
+      .exp-content h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.3rem; }
+      .exp-company { font-family: "DM Mono", monospace; font-size: 0.82rem; color: var(--accent); margin-bottom: 0.8rem; }
+      .exp-content p { font-family: "DM Mono", monospace; font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 
-      /* CONTACTO */
+      /* ── CONTACTO ── */
       .contact-wrap {
         background: var(--surface);
         border: 1px solid var(--border);
@@ -489,43 +347,18 @@
       .contact-wrap::before {
         content: "";
         position: absolute;
-        top: -100px;
-        left: 50%;
+        top: -100px; left: 50%;
         transform: translateX(-50%);
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          rgba(232, 255, 71, 0.05) 0%,
-          transparent 70%
-        );
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(232, 255, 71, 0.05) 0%, transparent 70%);
         pointer-events: none;
       }
-      .contact-wrap h2 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin-bottom: 1rem;
-        position: relative;
-      }
-      .contact-wrap h2 span {
-        color: var(--accent);
-      }
-      .contact-wrap p {
-        font-family: "DM Mono", monospace;
-        font-size: 0.9rem;
-        color: var(--muted);
-        margin-bottom: 2.5rem;
-        position: relative;
-      }
-      .contact-links {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
+      .contact-wrap h2 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; position: relative; }
+      .contact-wrap h2 span { color: var(--accent); }
+      .contact-wrap p { font-family: "DM Mono", monospace; font-size: 0.9rem; color: var(--muted); margin-bottom: 2.5rem; position: relative; }
+      .contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-      /* FOOTER */
+      /* ── FOOTER ── */
       footer {
         border-top: 1px solid var(--border);
         padding: 2rem 4rem;
@@ -536,72 +369,359 @@
         font-size: 0.75rem;
         color: var(--muted);
       }
+      .footer-links { display: flex; gap: 1.5rem; }
+      .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+      .footer-links a:hover { color: var(--accent); }
 
-      /* RESPONSIVE */
+      /* ══════════════════════════════════════
+         SECCIÓN PORTFOLIO DE ASIGNATURAS
+         ══════════════════════════════════════ */
+      #portfolio-asignaturas {
+        padding: 6rem 4rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .portfolio-intro {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 2.5rem 3rem;
+        margin-bottom: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .portfolio-intro-text h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .portfolio-intro-text p {
+        font-family: "DM Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .portfolio-stat-big {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+        text-align: center;
+      }
+      .portfolio-stat-big span {
+        display: block;
+        font-family: "DM Mono", monospace;
+        font-size: 0.7rem;
+        color: var(--muted);
+        font-weight: 400;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-top: 0.4rem;
+      }
+
+      /* MODULE NAV */
+      .module-nav {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+      }
+      .mod-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 0.8rem 1.2rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: left;
+        color: var(--text);
+        font-family: "Syne", sans-serif;
+      }
+      .mod-btn:hover { border-color: #444; background: var(--surface2); }
+      .mod-btn.active { border-color: var(--accent); background: rgba(232,255,71,0.05); }
+      .mod-code { font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; }
+      .mod-name { font-size: 0.78rem; color: var(--muted); font-weight: 400; max-width: 160px; }
+      .mod-btn.active .mod-name { color: var(--text); }
+
+      /* MODULE SECTIONS */
+      .mod-section { display: none; }
+      .mod-section.active { display: block; }
+
+      /* SECTION HEADER */
+      .mod-section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .mod-section-number { font-family: "DM Mono", monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 0.1em; }
+      .mod-section-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; }
+
+      /* TRIMESTRE TABS */
+      .trim-tabs {
+        display: flex;
+        gap: 0;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .trim-tab {
+        padding: 0.6rem 1.5rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: var(--muted);
+        border: none;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: all 0.2s;
+        background: none;
+      }
+      .trim-tab:hover { color: var(--text); }
+      .trim-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+      .trim-pane { display: none; }
+      .trim-pane.active { display: block; }
+
+      /* RA BLOCK */
+      .ra-block { margin-bottom: 3rem; }
+      .ra-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: rgba(232,255,71,0.05);
+        border: 1px solid rgba(232,255,71,0.15);
+        border-radius: 3px;
+        padding: 0.4rem 0.9rem;
+        margin-bottom: 1.5rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .ra-dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+
+      /* CARDS GRID */
+      .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.25s;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        color: inherit;
+      }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .card:hover { border-color: #383838; background: var(--surface2); transform: translateY(-2px); }
+      .card:hover::before { transform: scaleX(1); }
+      .card-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 3px;
+        padding: 2px 7px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .badge-pdf  { background: rgba(201,64,64,0.12); border: 1px solid rgba(201,64,64,0.25); color: #e87a7a; }
+      .badge-docx { background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.25); color: #7ab4e8; }
+      .badge-canva { background: rgba(0,196,204,0.12); border: 1px solid rgba(0,196,204,0.25); color: #5ee6ea; }
+      .badge-grupo { background: rgba(232,197,71,0.12); border: 1px solid rgba(232,197,71,0.25); color: #e8c547; }
+      .badge-practica { background: rgba(150,100,220,0.12); border: 1px solid rgba(150,100,220,0.25); color: #c09cef; }
+      .badge-cont { background: rgba(232,255,71,0.08); border: 1px solid rgba(232,255,71,0.2); color: var(--accent); }
+      .badge .dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+      .card h3 { font-size: 1rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; color: var(--text); }
+      .card p { font-family: "DM Mono", monospace; font-size: 0.78rem; line-height: 1.6; color: var(--muted); }
+      .card-footer {
+        margin-top: 1.2rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .card-file {
+        font-family: "DM Mono", monospace;
+        font-size: 0.67rem;
+        color: #555;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 220px;
+      }
+      .card-arrow { color: var(--accent); font-size: 1rem; transition: transform 0.2s; }
+      .card:hover .card-arrow { transform: translateX(4px); }
+
+      /* STATS ROW */
+      .stats-row {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+        padding: 2rem 2.5rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+      .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+      .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+      .stat-lbl { font-family: "DM Mono", monospace; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+      /* ── MODAL ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(12px);
+        z-index: 500;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .modal-overlay.open { display: flex; }
+      .modal {
+        background: var(--surface);
+        border: 1px solid #383838;
+        border-radius: 12px;
+        padding: 2.5rem;
+        max-width: 560px;
+        width: 100%;
+        position: relative;
+        animation: modalIn 0.2s ease;
+      }
+      @keyframes modalIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      .modal-close {
+        position: absolute;
+        top: 1rem; right: 1.2rem;
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: color 0.2s;
+        font-family: "DM Mono", monospace;
+      }
+      .modal-close:hover { color: var(--text); }
+      .modal h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+      .modal p { font-family: "DM Mono", monospace; font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 0.7rem; }
+      .modal-file {
+        margin-top: 1.2rem;
+        background: rgba(232,255,71,0.04);
+        border: 1px solid rgba(232,255,71,0.15);
+        border-radius: 6px;
+        padding: 0.8rem 1rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--accent);
+        line-height: 1.6;
+      }
+      .modal-group {
+        margin-top: 0.8rem;
+        background: rgba(232,197,71,0.05);
+        border: 1px solid rgba(232,197,71,0.2);
+        border-radius: 6px;
+        padding: 0.8rem 1rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        color: #e8c547;
+        line-height: 1.6;
+      }
+      .modal-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        background: rgba(0,196,204,0.07);
+        border: 1px solid rgba(0,196,204,0.2);
+        border-radius: 6px;
+        padding: 0.7rem 1rem;
+        text-decoration: none;
+        font-family: "DM Mono", monospace;
+        font-size: 0.75rem;
+        color: #5ee6ea;
+        transition: background 0.2s;
+      }
+      .modal-link:hover { background: rgba(0,196,204,0.14); }
+      .modal-open-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        background: var(--accent);
+        color: #0d0d0d;
+        border-radius: 4px;
+        padding: 0.7rem 1.2rem;
+        text-decoration: none;
+        font-family: "DM Mono", monospace;
+        font-size: 0.78rem;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+      .modal-open-link:hover { background: var(--accent-dark); }
+
+      /* ── RESPONSIVE ── */
       @media (max-width: 900px) {
-        .hero {
-          grid-template-columns: 1fr;
-          padding: 7rem 2rem 4rem;
-          text-align: center;
-        }
-        .hero-photo-wrap {
-          order: -1;
-        }
-        .hero-photo-frame {
-          width: 200px;
-          height: 240px;
-        }
-        .hero-tag {
-          justify-content: center;
-        }
-        .hero-btns {
-          justify-content: center;
-        }
-        .hero-desc {
-          margin: 0 auto 2.5rem;
-        }
+        .hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; text-align: center; }
+        .hero-photo-wrap { order: -1; }
+        .hero-photo-frame { width: 200px; height: 240px; }
+        .hero-tag { justify-content: center; }
+        .hero-btns { justify-content: center; }
+        .hero-desc { margin: 0 auto 2.5rem; }
+        .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       }
       @media (max-width: 768px) {
-        nav {
-          padding: 1rem 1.5rem;
-        }
-        .nav-links {
-          display: none;
-        }
-        section {
-          padding: 4rem 1.5rem;
-        }
-        .about-grid {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-        .exp-item {
-          grid-template-columns: 1fr;
-          gap: 0.5rem;
-        }
-        .contact-wrap {
-          padding: 2.5rem 1.5rem;
-        }
-        footer {
-          padding: 1.5rem;
-          flex-direction: column;
-          gap: 0.5rem;
-          text-align: center;
-        }
+        nav { padding: 1rem 1.5rem; }
+        .nav-links { display: none; }
+        section, #portfolio-asignaturas { padding: 4rem 1.5rem; }
+        .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+        .contact-wrap { padding: 2.5rem 1.5rem; }
+        footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+        .portfolio-intro { flex-direction: column; text-align: center; }
       }
     </style>
   </head>
   <body>
+
+    <!-- ══ NAV ══ -->
     <nav>
       <span class="nav-logo">// CristianRedCer</span>
       <ul class="nav-links">
         <li><a href="#sobre-mi">Sobre_Mí</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#portfolio-asignaturas">Portfolio_DAM</a></li>
         <li><a href="#formacion">Formación</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
 
+    <!-- ══ HERO ══ -->
     <div class="hero">
       <div class="hero-glow"></div>
       <div class="hero-left">
@@ -613,46 +733,27 @@
           ganas de seguir aprendiendo y crecer en el mundo del desarrollo.
         </p>
         <div class="hero-btns">
-          <a
-            href="Currículum Vitae Cristian Redondo Cervantes.pdf"
-            class="btn btn-primary"
-            target="_blank"
-            >↓ Descargar CV</a
-          >
+          <a href="Currículum Vitae Cristian Redondo Cervantes.pdf" class="btn btn-primary" target="_blank">↓ Descargar CV</a>
           <a href="#proyectos" class="btn btn-outline">Ver proyectos →</a>
+          <a href="#portfolio-asignaturas" class="btn btn-accent-outline">Portfolio DAM ↓</a>
         </div>
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo-frame">
-          <img
-            class="hero-photo"
-            src="foto_mia.jpg"
-            alt="Cristian Redondo Cervantes"
-          />
+          <img class="hero-photo" src="foto_mia.jpg" alt="Cristian Redondo Cervantes" />
         </div>
       </div>
     </div>
 
-    <!-- SOBRE MÍ -->
+    <!-- ══ SOBRE MÍ ══ -->
     <section id="sobre-mi">
       <p class="section-label">01 — Sobre mí</p>
       <h2 class="section-title">Quién soy</h2>
       <div class="about-grid">
         <div class="about-text">
-          <p>
-            Soy Cristian Redondo Cervantes, técnico en Microinformática y Redes
-            y actualmente estudiando el Grado Superior de DAM en el IES
-            Politécnico Jesús Marín (Málaga).
-          </p>
-          <p>
-            Apasionado de la informática, con rápida capacidad de aprendizaje y
-            habilidad para resolver problemas. Extrovertido, sociable y con
-            facilidad para trabajar en equipo. Certificado B2 Cambridge (2024).
-          </p>
-          <p>
-            Tengo experiencia real en prácticas de empresa: 410 horas en QUERRY
-            S.A. durante 2025.
-          </p>
+          <p>Soy Cristian Redondo Cervantes, técnico en Microinformática y Redes y actualmente estudiando el Grado Superior de DAM en el IES Politécnico Jesús Marín (Málaga).</p>
+          <p>Apasionado de la informática, con rápida capacidad de aprendizaje y habilidad para resolver problemas. Extrovertido, sociable y con facilidad para trabajar en equipo. Certificado B2 Cambridge (2024).</p>
+          <p>Tengo experiencia real en prácticas de empresa: 410 horas en QUERRY S.A. durante 2025.</p>
           <div class="cert-badge">🏅 Cambridge B2 Certificate — 2024</div>
         </div>
         <div>
@@ -673,22 +774,15 @@
       </div>
     </section>
 
-    <!-- PROYECTOS -->
-    <section
-      id="proyectos"
-      style="max-width: 1100px; margin: 0 auto; padding: 6rem 4rem"
-    >
+    <!-- ══ PROYECTOS ══ -->
+    <section id="proyectos" style="max-width: 1100px; margin: 0 auto; padding: 6rem 4rem">
       <p class="section-label">02 — Proyectos</p>
       <h2 class="section-title">Lo que he construido</h2>
       <div class="projects-grid">
         <div class="project-card">
           <p class="project-num">001</p>
           <h3>Ejercicios JSON & JavaScript</h3>
-          <p>
-            Colección de ejercicios prácticos trabajando con JSON y JavaScript:
-            lectura, escritura, manipulación de datos y pruebas con HTML.
-            Proyecto de clase con varias partes progresivas.
-          </p>
+          <p>Colección de ejercicios prácticos trabajando con JSON y JavaScript: lectura, escritura, manipulación de datos y pruebas con HTML. Proyecto de clase con varias partes progresivas.</p>
           <div class="project-tags">
             <span class="project-tag">JavaScript</span>
             <span class="project-tag">JSON</span>
@@ -696,23 +790,13 @@
             <span class="project-tag">CSS</span>
           </div>
           <div class="project-links">
-            <a
-              href="https://github.com/CristianRedCer/EjerciciosJson-JavaScript"
-              class="project-link"
-              target="_blank"
-              >⌥ GitHub</a
-            >
+            <a href="https://github.com/CristianRedCer/EjerciciosJson-JavaScript" class="project-link" target="_blank">⌥ GitHub</a>
           </div>
         </div>
-
         <div class="project-card">
           <p class="project-num">002</p>
           <h3>Crc-Portfolio</h3>
-          <p>
-            Este mismo portfolio. Página web personal construida desde cero con
-            HTML, CSS y JavaScript puro. Desplegada con GitHub Pages y GitHub
-            Actions.
-          </p>
+          <p>Este mismo portfolio. Página web personal construida desde cero con HTML, CSS y JavaScript puro. Desplegada con GitHub Pages y GitHub Actions.</p>
           <div class="project-tags">
             <span class="project-tag">HTML</span>
             <span class="project-tag">CSS</span>
@@ -720,20 +804,329 @@
             <span class="project-tag">GitHub Actions</span>
           </div>
           <div class="project-links">
-            <a
-              href="https://github.com/CristianRedCer/Crc-Portfolio"
-              class="project-link"
-              target="_blank"
-              >⌥ GitHub</a
-            >
+            <a href="https://github.com/CristianRedCer/Crc-Portfolio" class="project-link" target="_blank">⌥ GitHub</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FORMACIÓN & EXPERIENCIA -->
+    <!-- ══ PORTFOLIO DE ASIGNATURAS ══ -->
+    <section id="portfolio-asignaturas">
+      <p class="section-label">03 — Portfolio Digital DAM</p>
+      <h2 class="section-title">Trabajos del ciclo</h2>
+
+      <div class="portfolio-intro">
+        <div class="portfolio-intro-text">
+          <h3>Portafolio de actividades 2025–2026</h3>
+          <p>Trabajos y actividades del Grado Superior DAM, organizados por módulo, trimestre y resultado de aprendizaje. Haz clic en cualquier card para ver los detalles y el archivo correspondiente.</p>
+        </div>
+        <div class="portfolio-stat-big">26<span>Actividades</span></div>
+      </div>
+
+      <!-- NAVEGACIÓN DE MÓDULOS -->
+      <div class="module-nav">
+        <button class="mod-btn active" onclick="switchModule(event,'sost')">
+          <div><div class="mod-code">Módulo 1</div><div class="mod-name">Sostenibilidad</div></div>
+        </button>
+        <button class="mod-btn" onclick="switchModule(event,'si')">
+          <div><div class="mod-code">Módulo 2</div><div class="mod-name">Sistemas Informáticos</div></div>
+        </button>
+        <button class="mod-btn" onclick="switchModule(event,'digi')">
+          <div><div class="mod-code">Módulo 3</div><div class="mod-name">Digitalización</div></div>
+        </button>
+      </div>
+
+      <!-- ══ SOSTENIBILIDAD ══ -->
+      <div id="mod-sost" class="mod-section active">
+        <div class="mod-section-header">
+          <span class="mod-section-number">01</span>
+          <h3 class="mod-section-title">Sostenibilidad Aplicada al Sistema Productivo</h3>
+        </div>
+        <div class="trim-tabs">
+          <button class="trim-tab active" onclick="switchTrim(event,'sost','t1')">1.er Trimestre</button>
+          <button class="trim-tab" onclick="switchTrim(event,'sost','t2')">2.º Trimestre</button>
+        </div>
+
+        <div id="sost-t1" class="trim-pane active">
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>RA1 — Sostenibilidad e Impacto Ambiental de las TIC</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('sost_act11')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Act1-1 — Reflexión sobre el impacto ambiental de la informática</h3>
+                <p>Análisis del doble papel de la informática: huella ecológica vs. optimización de procesos y reducción de emisiones.</p>
+                <div class="card-footer"><span class="card-file">Cristian Redondo Cervantes-Act1-1.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_act12')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>ActividadR1-2 — Investigación compromisos ASG</h3>
+                <p>Tabla comparativa de compromisos Ambientales, Sociales y de Gobernanza. Grupo Social ONCE, transparencia y métricas.</p>
+                <div class="card-footer"><span class="card-file">ActividadR1-2-Cristian-Redondo-Cervantes.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_act13')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad R1-3 — Sostenibilidad en grandes empresas tecnológicas</h3>
+                <p>Políticas medioambientales de Google y Amazon Web Services. Energías renovables y neutralidad de carbono.</p>
+                <div class="card-footer"><span class="card-file">Actividad R1-3.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_act14')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad R1-4 — Estándares de reporting: GRI y ASG</h3>
+                <p>Global Reporting Initiative como marco de transparencia empresarial. Importancia de los indicadores ASG para inversores.</p>
+                <div class="card-footer"><span class="card-file">Actividad R1-4.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_carg')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Reflexión sobre cargadores universales</h3>
+                <p>Debate sobre obligatoriedad de incluir cargadores. Perspectiva económica, medioambiental y del consumidor. Caso Apple y directiva UE.</p>
+                <div class="card-footer"><span class="card-file">Reflexión sobre cargadores.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_ra1pdf')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-cont"><span class="dot"></span>Contenido</span></div>
+                <h3>RA1 — Material base de Sostenibilidad</h3>
+                <p>Marco teórico y conceptual del Resultado de Aprendizaje 1. Referencia base del primer trimestre.</p>
+                <div class="card-footer"><span class="card-file">RA1-SOSTENIBILIDAD.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="sost-t2" class="trim-pane">
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>RA2 — Eficiencia, Retos Globales y Debate Técnico</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('sost_act21')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>ACT2-1 — Retos Globales: El streaming y sus consecuencias</h3>
+                <p>Impacto energético del streaming: 40-55 g CO₂/hora de video. Centros de datos, redes y dispositivos. El video = 60% del tráfico global de Internet.</p>
+                <div class="card-footer"><span class="card-file">ACT2-1 Retos Globales.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('sost_debate')">
+                <div class="card-badges"><span class="badge badge-grupo"><span class="dot"></span>Grupo</span><span class="badge badge-docx"><span class="dot"></span>DOCX</span></div>
+                <h3>RA2-2 — Debate: Eficiencia del código y sostenibilidad tecnológica</h3>
+                <p>Debate estructurado sobre código limpio vs. código eficiente. Responsabilidad ambiental del desarrollador en producción.</p>
+                <div class="card-footer"><span class="card-file">Debate sobre eficiencia del código…</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>RA3 — Análisis y Presentación de Datos de Sostenibilidad</div>
+            <div class="cards-grid">
+              <a class="card" href="https://www.canva.com/design/DAHECdIpCPI/l-2Hi7Yd9RgiQDoO5FuB5w/edit?authuser=0" target="_blank" rel="noopener">
+                <div class="card-badges"><span class="badge badge-canva"><span class="dot"></span>Canva</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>RA3-1 — Presentación Sostenibilidad</h3>
+                <p>Presentación visual en Canva sobre análisis y comunicación de datos relacionados con sostenibilidad tecnológica.</p>
+                <div class="card-footer"><span class="card-file">Ver en Canva</span><span class="card-arrow">↗</span></div>
+              </a>
+            </div>
+          </div>
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>RA4 — Estrategias y Propuestas de Mejora</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('sost_ra41')">
+                <div class="card-badges"><span class="badge badge-grupo"><span class="dot"></span>Grupo</span><span class="badge badge-canva"><span class="dot"></span>Canva</span></div>
+                <h3>RA4-1 — Propuesta de mejora de sostenibilidad</h3>
+                <p>Trabajo en grupo: estrategias de mejora en sostenibilidad tecnológica. Presentación en Canva.</p>
+                <div class="card-footer"><span class="card-file">Ver en Canva</span><span class="card-arrow">↗</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">Actividades</span></div>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Trimestres</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">RA trabajados</span></div>
+          <div class="stat"><span class="stat-num">2</span><span class="stat-lbl">Trabajos en grupo</span></div>
+        </div>
+      </div>
+
+      <!-- ══ SISTEMAS INFORMÁTICOS ══ -->
+      <div id="mod-si" class="mod-section">
+        <div class="mod-section-header">
+          <span class="mod-section-number">02</span>
+          <h3 class="mod-section-title">Sistemas Informáticos</h3>
+        </div>
+        <div class="trim-tabs">
+          <button class="trim-tab active" onclick="switchTrim(event,'si','t1')">1.er Trimestre</button>
+          <button class="trim-tab" onclick="switchTrim(event,'si','t2')">2.º Trimestre</button>
+        </div>
+
+        <div id="si-t1" class="trim-pane active">
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>Tema 1 — Introducción a los Sistemas Informáticos</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('si_11')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 1.1 — Componentes de un sistema informático</h3>
+                <p>Estudio de los componentes hardware fundamentales. Identificación y función de CPU, RAM, almacenamiento y periféricos.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.1.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_12')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 1.2 — Arquitectura y funcionamiento del sistema</h3>
+                <p>Arquitectura von Neumann, ciclo fetch-decode-execute, estructura de buses y jerarquía de memoria.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.2.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_13')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 1.3 — Práctica de laboratorio hardware</h3>
+                <p>Identificación y manipulación de componentes físicos en el laboratorio. Documentación con capturas y resultados.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.3.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_14')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Actividad 1.4 — Montaje y configuración de PCs</h3>
+                <p>Montaje físico completo de un equipo. Procedimiento paso a paso con documentación fotográfica. Incluye simulador de montaje.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.4.docx + Simulador montaje PCs.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_15')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 1.5 — Representación de la información</h3>
+                <p>Sistemas de numeración, codificación binaria y hexadecimal. Conversiones entre bases y representación de datos.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.5.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_16')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Actividad 1.6 — Simulador CPU (LSPC)</h3>
+                <p>Programación en ensamblador con el simulador LSPC. Análisis del ciclo de instrucción en tiempo real.</p>
+                <div class="card-footer"><span class="card-file">Cristian-Actividad1.6.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_aula')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-practica"><span class="dot"></span>Clase</span></div>
+                <h3>Actividad de clase — Primer programa con Simulador CPU</h3>
+                <p>Primera toma de contacto con el simulador de CPU. Escritura del primer programa en ensamblador.</p>
+                <div class="card-footer"><span class="card-file">Actividad de clase-Primer programa con Simulador CPU.docx</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>Tema 2 — Implantación de Sistemas Operativos I</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('si_21act')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 1.1 — Instalación de Sistema Operativo</h3>
+                <p>Proceso de instalación completo. Documentación con capturas de pantalla de cada etapa (10 capturas + captura final).</p>
+                <div class="card-footer"><span class="card-file">Implantación de Sistemas Operativos I.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_22act')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 2.2 — Configuración del Sistema Operativo</h3>
+                <p>Gestión de usuarios, actualizaciones, drivers y herramientas del sistema. Configuración post-instalación.</p>
+                <div class="card-footer"><span class="card-file">Actividad2.2-CristianRedondoCervantes.docx/.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_p21')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 2.1 — Instalación Windows 10 en VM</h3>
+                <p>Instalación de Windows 10 en máquina virtual VirtualBox. Capturas completas de todo el proceso.</p>
+                <div class="card-footer"><span class="card-file">P2_1_CristianRedondo.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_p22')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 2.2 — Configuración avanzada del SO</h3>
+                <p>Firewall, actualizaciones, directivas básicas y optimización del rendimiento del sistema operativo.</p>
+                <div class="card-footer"><span class="card-file">P2-2_CritianRedondo.docx</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_p24')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 2.4 — Gestión de memoria: Paginación</h3>
+                <p>Análisis y configuración de la memoria virtual. Estudio del sistema de paginación en Windows.</p>
+                <div class="card-footer"><span class="card-file">P2_4_CristianRedondo.docx/.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="si-t2" class="trim-pane">
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>Tema 3 — Gestión de Ficheros, Directorios y Scripting</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('si_31')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 3.1 — Gestión de ficheros</h3>
+                <p>Operaciones con ficheros en CMD, PowerShell y GUI de Windows. Comandos avanzados con capturas de cada entorno.</p>
+                <div class="card-footer"><span class="card-file">Actividad 3.1 Gestión de ficheros.docx/.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_32')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 3.2 — Gestión de directorios</h3>
+                <p>Estructura de directorios en Windows. Operaciones en CMD (mkdir, rmdir, tree…) y PowerShell (New-Item, Get-ChildItem…).</p>
+                <div class="card-footer"><span class="card-file">Actividad 3.2 Gestión de directorios.docx/.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_33')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Scripts</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Actividad 3.3 — Copias de seguridad y Programador de tareas</h3>
+                <p>Automatización con scripts propios .bat y PowerShell: copia_orden_CRC, copia_pdf_num_CRC, elimina_pdf_num_CRC, mensaje_cierre_CRC.</p>
+                <div class="card-footer"><span class="card-file">Actividad3.3_Cristian.pdf + 5 scripts</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_retos')">
+                <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+                <h3>Act-Retos — Retos avanzados Tema 3</h3>
+                <p>Actividades de reto y ampliación. Ejercicios de nivel avanzado sobre gestión y administración del sistema operativo.</p>
+                <div class="card-footer"><span class="card-file">Act-Retos.docx</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ra-block">
+            <div class="ra-label"><span class="ra-dot"></span>Prácticas — Windows y Ubuntu</div>
+            <div class="cards-grid">
+              <div class="card" onclick="openModal('si_p24b')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 2.4 — Creación de Particiones</h3>
+                <p>Gestión de particiones: creación, formateo, redimensionado. Herramientas de administración de discos y diskpart.</p>
+                <div class="card-footer"><span class="card-file">P2.4-CristianRedondoCervantes.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_p31')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 3.1 — Gestión de ficheros y directorios en Windows</h3>
+                <p>Práctica completa de gestión de ficheros y directorios. CMD, PowerShell y explorador de archivos Windows.</p>
+                <div class="card-footer"><span class="card-file">Práctica 3.1 Gestión de ficheros y directorios en Windows.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+              <div class="card" onclick="openModal('si_p32')">
+                <div class="card-badges"><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-practica"><span class="dot"></span>Práctica</span></div>
+                <h3>Práctica 3.2 — Gestión en Ubuntu</h3>
+                <p>Gestión de ficheros y directorios en Ubuntu Linux. Comandos de terminal y comparativa con entorno Windows.</p>
+                <div class="card-footer"><span class="card-file">Practica 3.2 Ubuntu.pdf</span><span class="card-arrow">→</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">15</span><span class="stat-lbl">Actividades y prácticas</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Trimestres</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-lbl">Temas</span></div>
+          <div class="stat"><span class="stat-num">5</span><span class="stat-lbl">Scripts propios</span></div>
+        </div>
+      </div>
+
+      <!-- ══ DIGITALIZACIÓN ══ -->
+      <div id="mod-digi" class="mod-section">
+        <div class="mod-section-header">
+          <span class="mod-section-number">03</span>
+          <h3 class="mod-section-title">Digitalización Aplicada al Sistema Productivo</h3>
+        </div>
+        <div class="ra-block">
+          <div class="ra-label"><span class="ra-dot"></span>RA4 — Digitalización y Transformación del Sistema Productivo</div>
+          <div class="cards-grid">
+            <div class="card" onclick="openModal('digi_ra4')">
+              <div class="card-badges"><span class="badge badge-docx"><span class="dot"></span>DOCX</span><span class="badge badge-pdf"><span class="dot"></span>PDF</span><span class="badge badge-pdf"><span class="dot"></span>Actividad</span></div>
+              <h3>RA4 — Digitalización Aplicada</h3>
+              <p>Análisis y propuestas de digitalización aplicadas al sistema productivo. Transformación digital, herramientas y estrategias de implantación.</p>
+              <div class="card-footer"><span class="card-file">RA4.docx / RA4.pdf</span><span class="card-arrow">→</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">Actividad</span></div>
+          <div class="stat"><span class="stat-num">1</span><span class="stat-lbl">RA completado</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FORMACIÓN & EXPERIENCIA ══ -->
     <section id="formacion">
-      <p class="section-label">03 — Formación & Experiencia</p>
+      <p class="section-label">04 — Formación & Experiencia</p>
       <h2 class="section-title">Mi trayectoria</h2>
       <div class="exp-list">
         <div class="exp-item">
@@ -741,86 +1134,136 @@
           <div class="exp-content">
             <h3>Grado Superior DAM</h3>
             <p class="exp-company">IES Politécnico Jesús Marín · Málaga</p>
-            <p>
-              Desarrollo de Aplicaciones Multiplataforma. Java, Android, bases
-              de datos, XML, JSON y desarrollo web.
-            </p>
+            <p>Desarrollo de Aplicaciones Multiplataforma. Java, Android, bases de datos, XML, JSON y desarrollo web.</p>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-date">2025 · 410h</div>
           <div class="exp-content">
             <h3>Prácticas de Empresa</h3>
             <p class="exp-company">QUERRY S.A</p>
-            <p>
-              Prácticas del Grado Medio en empresa real. Primera experiencia
-              profesional en entorno TIC.
-            </p>
+            <p>Prácticas del Grado Medio en empresa real. Primera experiencia profesional en entorno TIC.</p>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-date">2023 — 2025</div>
           <div class="exp-content">
             <h3>Grado Medio Microinformática y Redes</h3>
             <p class="exp-company">IES Politécnico Jesús Marín · Málaga</p>
-            <p>
-              Técnico en sistemas, redes, mantenimiento de equipos e
-              infraestructura informática.
-            </p>
+            <p>Técnico en sistemas, redes, mantenimiento de equipos e infraestructura informática.</p>
           </div>
         </div>
-
         <div class="exp-item">
           <div class="exp-date">2024</div>
           <div class="exp-content">
             <h3>Certificado B2 Cambridge</h3>
             <p class="exp-company">Cambridge English</p>
-            <p>
-              Certificación oficial de inglés nivel B2 — Upper Intermediate.
-            </p>
+            <p>Certificación oficial de inglés nivel B2 — Upper Intermediate.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACTO -->
+    <!-- ══ CONTACTO ══ -->
     <section id="contacto" style="max-width: 900px">
       <div class="contact-wrap">
-        <p class="section-label" style="justify-content: center">
-          04 — Contacto
-        </p>
+        <p class="section-label" style="justify-content: center">05 — Contacto</p>
         <h2>¿Hablamos?<br /><span>Estoy disponible.</span></h2>
-        <p>
-          Busco prácticas o proyectos donde seguir aprendiendo. Si tienes algo
-          interesante, escríbeme sin compromiso.
-        </p>
+        <p>Busco prácticas o proyectos donde seguir aprendiendo. Si tienes algo interesante, escríbeme sin compromiso.</p>
         <div class="contact-links">
-          <a
-            href="mailto:cervantes.redondo.cristian@gmail.com"
-            class="btn btn-primary"
-            >✉ Email</a
-          >
-          <a
-            href="https://github.com/CristianRedCer"
-            class="btn btn-outline"
-            target="_blank"
-            >GitHub</a
-          >
-          <a
-            href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/"
-            class="btn btn-outline"
-            target="_blank"
-            >LinkedIn</a
-          >
+          <a href="mailto:cervantes.redondo.cristian@gmail.com" class="btn btn-primary">✉ Email</a>
+          <a href="https://github.com/CristianRedCer" class="btn btn-outline" target="_blank">GitHub</a>
+          <a href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/" class="btn btn-outline" target="_blank">LinkedIn</a>
         </div>
       </div>
     </section>
 
+    <!-- ══ FOOTER ══ -->
     <footer>
       <span>© 2026 CristianRedCer</span>
-      <span>Hecho con HTML y CSS</span>
+      <div class="footer-links">
+        <a href="mailto:cervantes.redondo.cristian@gmail.com">Email</a>
+        <a href="https://github.com/CristianRedCer" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/cristian-redondo-cervantes-12a508333/" target="_blank">LinkedIn</a>
+      </div>
     </footer>
+
+    <!-- ══ MODAL ══ -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeOnBg(event)">
+      <div class="modal" id="modalBox">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <script>
+    /* ── MODULE SWITCH ── */
+    function switchModule(e, id) {
+      document.querySelectorAll('.mod-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.mod-section').forEach(s => s.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      document.getElementById('mod-' + id).classList.add('active');
+    }
+
+    /* ── TRIM SWITCH ── */
+    function switchTrim(e, mod, tab) {
+      const sec = document.getElementById('mod-' + mod);
+      sec.querySelectorAll('.trim-tab').forEach(t => t.classList.remove('active'));
+      sec.querySelectorAll('.trim-pane').forEach(p => p.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById(mod + '-' + tab).classList.add('active');
+    }
+
+    /* ── MODAL DATA ── */
+    const M = {
+      sost_act11:{ t:'Act1-1 — Impacto ambiental de la informática', c:'Reflexión personal sobre el doble papel de la informática: generación de residuos electrónicos y consumo energético de centros de datos vs. optimización de procesos industriales y reducción de emisiones.', f:'Cristian Redondo Cervantes-Act1-1.docx' },
+      sost_act12:{ t:'ActividadR1-2 — Compromisos ASG', c:'Investigación comparativa de compromisos Ambientales, Sociales y de Gobernanza. Tabla estructurada por empresa: Grupo Social ONCE (vehículos eléctricos, inclusión laboral, auditorías externas) y otras organizaciones.', f:'ActividadR1-2-Cristian-Redondo-Cervantes.docx' },
+      sost_act13:{ t:'Actividad R1-3 — Google y AWS', c:'Análisis de las estrategias de sostenibilidad de Google (Alphabet Inc.) y Amazon Web Services: objetivos de neutralidad de carbono, uso de energías renovables y compromisos publicados en sus informes anuales.', f:'Actividad R1-3.docx' },
+      sost_act14:{ t:'Actividad R1-4 — GRI y estándares ASG', c:'Estudio del Global Reporting Initiative (GRI), el estándar más utilizado mundialmente para informes de sostenibilidad. Indicadores ASG, transparencia empresarial e importancia para inversores y grupos de interés.', f:'Actividad R1-4.docx' },
+      sost_carg:{ t:'Reflexión sobre cargadores universales', c:'Debate sobre si los móviles deberían incluir cargador. Tres perspectivas: consumidor (necesidad y coste), empresa (margen y modelo de negocio) y medioambiental (reducción de residuos electrónicos). Caso Apple y directiva europea USB-C.', f:'Reflexión sobre cargadores.docx' },
+      sost_ra1pdf:{ t:'RA1 — Material base de Sostenibilidad', c:'Documento PDF con el marco teórico y conceptual del Resultado de Aprendizaje 1. Base de todas las actividades del primer trimestre del módulo de Sostenibilidad.', f:'RA1-SOSTENIBILIDAD.pdf' },
+      sost_act21:{ t:'ACT2-1 — El streaming y sus consecuencias', c:'Análisis del impacto ambiental del streaming: 40-55 g CO₂/hora de video. Cadena de emisiones completa: centros de datos (servidores 24/7 + refrigeración), redes (fibra, routers, antenas 4G/5G) y dispositivos. El video representa el 60% del tráfico global de Internet.', f:'ACT2-1 Retos Globales.docx' },
+      sost_debate:{ t:'RA2-2 — Debate: Eficiencia del código y sostenibilidad', c:'Debate estructurado sobre código limpio/legible vs. código eficiente/optimizado. Implicaciones en mantenibilidad, rendimiento en producción y consumo energético. Responsabilidad ética del desarrollador ante el medioambiente.', f:'Debate sobre eficiencia del código y sostenibilidad tecnológica.docx + .pdf', g:'👥 Cristian Redondo Cervantes · Alexis Esteban Martín' },
+      sost_ra41:{ t:'RA4-1 — Propuesta de mejora de sostenibilidad', c:'Trabajo en grupo: análisis y propuesta de estrategias de mejora en sostenibilidad tecnológica. Presentación con datos, visualizaciones y recomendaciones concretas elaborada en Canva.', g:'👥 Cristian Redondo Cervantes · Juan Manuel Toro Acuña · Alexis Esteban Martín · Arturo Carmona Roldán', link:'https://www.canva.com/design/DAHET9zlvgI/i-z9gfVcdm9NZ0nXOyQKJw/edit?authuser=0' },
+      si_11:{ t:'Actividad 1.1 — Componentes de un sistema informático', c:'Estudio de los componentes hardware fundamentales: CPU, RAM, almacenamiento, placa base, tarjeta gráfica, fuente de alimentación. Identificación y función de cada elemento.', f:'Cristian-Actividad1.1.docx' },
+      si_12:{ t:'Actividad 1.2 — Arquitectura y funcionamiento', c:'Arquitectura von Neumann, ciclo de instrucción (fetch-decode-execute), estructura de buses (datos, direcciones, control) y jerarquía de memoria (registros, caché, RAM, disco).', f:'Cristian-Actividad1.2.docx' },
+      si_13:{ t:'Actividad 1.3 — Práctica de laboratorio hardware', c:'Práctica de identificación y manipulación de componentes físicos. Documentación con capturas fotográficas y análisis de resultados obtenidos en laboratorio.', f:'Cristian-Actividad1.3.pdf' },
+      si_14:{ t:'Actividad 1.4 — Montaje y configuración de PCs', c:'Práctica de montaje físico completo de un equipo informático, incluyendo el simulador de montaje de PCs. Procedimiento paso a paso documentado con capturas.', f:'Cristian-Actividad1.4.docx + Cristian-Actividad1.4.pdf + Simulador montaje de PCs.docx' },
+      si_15:{ t:'Actividad 1.5 — Representación de la información', c:'Sistemas de numeración (binario, octal, hexadecimal, decimal). Conversiones entre bases. Codificación ASCII y Unicode. Representación de enteros y reales en punto flotante IEEE 754.', f:'Cristian-Actividad1.5.docx' },
+      si_16:{ t:'Actividad 1.6 — Simulador CPU (LSPC)', c:'Práctica con el simulador de CPU LSPC. Programación en ensamblador: instrucciones MOV, ADD, JMP, etc. Análisis del ciclo de instrucción en tiempo real desde el simulador.', f:'Cristian-Actividad1.6.pdf' },
+      si_aula:{ t:'Actividad de clase — Primer programa con Simulador CPU', c:'Primera toma de contacto en el aula con el simulador de CPU. Escritura y ejecución del primer programa en ensamblador bajo guía del profesor. Introducción a la programación de bajo nivel.', f:'Actividad de clase-Primer programa con Simulador CPU.docx' },
+      si_21act:{ t:'Actividad 1.1 — Instalación de SO', c:'Proceso completo de instalación de un sistema operativo. Particionado, formateo, selección de parámetros y configuración inicial. Documentado con 10 capturas + captura final del sistema funcionando.', f:'Implantación de Sistemas Operativos I.pdf' },
+      si_22act:{ t:'Actividad 2.2 — Configuración del SO', c:'Configuración post-instalación: creación y gestión de usuarios, actualización del sistema, instalación de drivers, herramientas de administración y personalización del entorno de trabajo.', f:'Actividad2.2-CristianRedondoCervantes.docx + .pdf' },
+      si_p21:{ t:'Práctica 2.1 — Instalación Windows 10 en VM', c:'Instalación de Windows 10 en máquina virtual VirtualBox. Creación de la VM, configuración de recursos asignados, proceso de instalación completo y ajustes iniciales del sistema.', f:'P2_1_CristianRedondo.pdf' },
+      si_p22:{ t:'Práctica 2.2 — Configuración avanzada del SO', c:'Configuración avanzada post-instalación: gestión de actualizaciones, firewall, antivirus, directivas de grupo básicas y optimización del rendimiento del sistema operativo.', f:'P2-2_CritianRedondo.docx' },
+      si_p24:{ t:'Práctica 2.4 — Gestión de memoria y paginación', c:'Análisis del sistema de gestión de memoria virtual de Windows. Configuración del archivo de paginación, monitorización del uso de memoria RAM y técnicas de optimización.', f:'P2_4_CristianRedondo.docx + .pdf' },
+      si_31:{ t:'Actividad 3.1 — Gestión de ficheros', c:'Operaciones con ficheros usando CMD (dir, copy, del, ren…), PowerShell (Get-Item, Copy-Item, Remove-Item…) y entorno gráfico Windows. Comparativa de comandos y capturas de cada entorno.', f:'Actividad 3.1 Gestión de ficheros.docx + .pdf' },
+      si_32:{ t:'Actividad 3.2 — Gestión de directorios', c:'Estructura de directorios en Windows. Operaciones en CMD (mkdir, rmdir, cd, tree…) y PowerShell (New-Item, Get-ChildItem…). Árbol de directorios, permisos básicos y comparativa entre interfaces.', f:'Actividad 3.2 Gestión de directorios.docx + .pdf' },
+      si_33:{ t:'Actividad 3.3 — Copias de seguridad y Programador de tareas', c:'Automatización de copias de seguridad con scripts propios en .bat y PowerShell. Programador de tareas Windows para ejecución automática. Scripts entregados: copia_orden_CRC.bat, copia_pdf_num_CRC.ps1, elimina_pdf_num_CRC.bat, mensaje_cierre_CRC.ps1, permisos_de_ejecucion.ps1.', f:'Actividad3.3_Cristian.pdf + 5 scripts (.bat / .ps1)' },
+      si_retos:{ t:'Act-Retos — Retos avanzados Tema 3', c:'Actividades de reto y ampliación del Tema 3. Ejercicios de nivel avanzado sobre gestión del sistema operativo, automatización de tareas y administración del sistema en Windows.', f:'Act-Retos.docx' },
+      si_p24b:{ t:'Práctica 2.4 — Creación de Particiones', c:'Gestión completa de particiones en disco duro: creación, formateo, redimensionado y eliminación. Uso de herramientas de administración de discos de Windows y línea de comandos (diskpart).', f:'P2.4-CristianRedondoCervantes.pdf' },
+      si_p31:{ t:'Práctica 3.1 — Gestión en Windows (ficheros y directorios)', c:'Práctica completa de gestión de ficheros y directorios en entorno Windows. Trabajo simultáneo con CMD, PowerShell y la interfaz gráfica del explorador de archivos.', f:'Práctica 3.1 Gestión de ficheros y directorios en Windows.pdf' },
+      si_p32:{ t:'Práctica 3.2 — Gestión en Ubuntu', c:'Gestión de ficheros y directorios en Ubuntu Linux. Comandos de terminal: ls, cd, mkdir, cp, mv, rm, chmod, chown. Comparativa con el entorno Windows visto en prácticas anteriores.', f:'Practica 3.2 Ubuntu.pdf' },
+      digi_ra4:{ t:'RA4 — Digitalización Aplicada al Sistema Productivo', c:'Análisis de la transformación digital y su impacto en el sistema productivo. Herramientas, estrategias y casos de uso de la digitalización en entornos empresariales y productivos actuales.', f:'RA4.docx + RA4.pdf' },
+    };
+
+    function openModal(id) {
+      const m = M[id]; if (!m) return;
+      let html = `<h2>${m.t}</h2><p>${m.c}</p>`;
+      if (m.g) html += `<div class="modal-group">${m.g}</div>`;
+      if (m.f) html += `<div class="modal-file">📄 ${m.f}<br><br><small style="color:#555;font-size:0.68rem">→ Coloca el archivo en la carpeta <strong style="color:#777">docs/</strong> de tu repositorio y actualiza el enlace abajo</small></div>`;
+      if (m.link) html += `<a class="modal-link" href="${m.link}" target="_blank" rel="noopener">↗ Ver en Canva</a>`;
+      // Generate file link if file exists (user needs to add to docs/ folder)
+      if (m.f && !m.link) {
+        const firstFile = m.f.split(' + ')[0].trim();
+        html += `<a class="modal-open-link" href="docs/${firstFile}" target="_blank">↗ Abrir archivo</a>`;
+      }
+      document.getElementById('modalContent').innerHTML = html;
+      document.getElementById('modalOverlay').classList.add('open');
+    }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+    function closeOnBg(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    </script>
   </body>
 </html>
